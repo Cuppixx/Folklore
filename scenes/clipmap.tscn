@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://2q6yeun0jg1p"]
+
+[ext_resource type="Script" path="res://scripts/clipmap.gd" id="1_cnysx"]
+
+[node name="Clipmap" type="StaticBody3D"]
+script = ExtResource("1_cnysx")
