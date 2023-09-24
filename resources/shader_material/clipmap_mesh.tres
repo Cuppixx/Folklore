@@ -26,8 +26,14 @@ noise = SubResource("FastNoiseLite_1r1ot")
 [resource]
 render_priority = 0
 shader = ExtResource("1_j1l84")
-shader_parameter/heightmap_height_value = 31.4
+shader_parameter/heightmap_height_value = 48.6
 shader_parameter/heightmap_mipmap_lvl = 0
+shader_parameter/uv_x = null
+shader_parameter/uv_z = null
+shader_parameter/uv_x_frag = null
+shader_parameter/uv_z_frag = null
+shader_parameter/normalmap_depth_value = 1.0
 shader_parameter/u_terrain_normal_basis = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap = SubResource("NoiseTexture2D_lnowy")
 shader_parameter/normalmap = SubResource("NoiseTexture2D_q4hts")
+shader_parameter/normalmap_fragment_copy = SubResource("NoiseTexture2D_q4hts")
