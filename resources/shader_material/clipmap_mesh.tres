@@ -1,3 +1,33 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://d2yyg25vw0i8t"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://d2yyg25vw0i8t"]
+
+[ext_resource type="Shader" uid="uid://bq6brqow8lsc5" path="res://resources/shader_visual/clipmap_mesh.tres" id="1_j1l84"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o0tci"]
+noise_type = 3
+seed = 105
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lnowy"]
+seamless = true
+seamless_blend_skirt = 1.0
+normalize = false
+noise = SubResource("FastNoiseLite_o0tci")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1r1ot"]
+noise_type = 3
+seed = 105
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q4hts"]
+seamless = true
+seamless_blend_skirt = 1.0
+as_normal_map = true
+normalize = false
+noise = SubResource("FastNoiseLite_1r1ot")
 
 [resource]
+render_priority = 0
+shader = ExtResource("1_j1l84")
+shader_parameter/heightmap_height_value = 31.4
+shader_parameter/heightmap_mipmap_lvl = 0
+shader_parameter/u_terrain_normal_basis = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
+shader_parameter/heightmap = SubResource("NoiseTexture2D_lnowy")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_q4hts")
