@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=41 format=3 uid="uid://bq6brqow8lsc5"]
+[gd_resource type="VisualShader" load_steps=38 format=3 uid="uid://bq6brqow8lsc5"]
 
 [sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_1yx8p"]
 size = Vector2(1007.76, 331.249)
@@ -105,11 +105,6 @@ step = 0.001
 default_value_enabled = true
 default_value = 1.0
 
-[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_4n3o7"]
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_sa0uu"]
-operator = 2
-
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_vjo22"]
 input_name = "uv"
 
@@ -136,10 +131,10 @@ expression = "NORMAL = unpack_normalmap(texture(normalmap_input, UVoffset)) * u_
 parameter_name = "heightmap"
 
 [sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_uwm1w"]
-size = Vector2(1083.99, 302.141)
+size = Vector2(1083.99, 413.266)
 expression = "vec3 world_vertex = VERTEX + MODEL_MATRIX[3].xyz + (float(textureSize(heightmap,heightmap_mipmap_lvl).x)/2.0);
 vec2 texture_position = world_vertex.xz/float(textureSize(heightmap,heightmap_mipmap_lvl).x);
-vertex_y = texture(heightmap, texture_position).g;"
+vertex_y = vec3(VERTEX.x, texture(heightmap, texture_position).g * heightmap_height_value, VERTEX.z);"
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_obei4"]
 parameter_name = "uv_x"
@@ -169,8 +164,6 @@ parameter_name = "heightmap_height_value"
 hint = 2
 max = 500.0
 
-[sub_resource type="VisualShaderNodeVectorDecompose" id="VisualShaderNodeVectorDecompose_kt770"]
-
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_srkwl"]
 input_name = "vertex"
 
@@ -178,9 +171,9 @@ input_name = "vertex"
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_toon;
 
-uniform float heightmap_height_value : hint_range(0, 500, 0.10000000149012);
 uniform sampler2D heightmap;
 uniform int heightmap_mipmap_lvl = 0;
+uniform float heightmap_height_value : hint_range(0, 500, 0.10000000149012);
 uniform float uv_x : hint_range(-100, 100, 0.0010000000475);
 uniform float uv_z : hint_range(-100, 100, 0.0010000000475);
 uniform sampler2D normalmap : hint_normal;
@@ -205,36 +198,22 @@ void vertex() {
 	vec3 n_out9p0 = VERTEX;
 
 
-// VectorDecompose:8
-	float n_out8p0 = n_out9p0.x;
-	float n_out8p1 = n_out9p0.y;
-	float n_out8p2 = n_out9p0.z;
+// IntParameter:32
+	int n_out32p0 = heightmap_mipmap_lvl;
 
 
 // FloatParameter:6
 	float n_out6p0 = heightmap_height_value;
 
 
-// IntParameter:32
-	int n_out32p0 = heightmap_mipmap_lvl;
-
-
-	float n_out23p0;
+	vec3 n_out23p0;
 // Expression:23
-	n_out23p0 = 0.0;
+	n_out23p0 = vec3(0.0, 0.0, 0.0);
 	{
 		vec3 world_vertex = n_out9p0 + MODEL_MATRIX[3].xyz + (float(textureSize(heightmap,n_out32p0).x)/2.0);
 		vec2 texture_position = world_vertex.xz/float(textureSize(heightmap,n_out32p0).x);
-		n_out23p0 = texture(heightmap, texture_position).g;
+		n_out23p0 = vec3(n_out9p0.x, texture(heightmap, texture_position).g * n_out6p0, n_out9p0.z);
 	}
-
-
-// FloatOp:12
-	float n_out12p0 = n_out6p0 * n_out23p0;
-
-
-// VectorCompose:10
-	vec3 n_out10p0 = vec3(n_out8p0, n_out12p0, n_out8p2);
 
 
 // Input:14
@@ -267,7 +246,7 @@ void vertex() {
 
 
 // Output:0
-	VERTEX = n_out10p0;
+	VERTEX = n_out23p0;
 	NORMAL = n_out18p0;
 
 
@@ -328,26 +307,21 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-783.052, -564.005)
 modes/specular = 1
 nodes/vertex/0/position = Vector2(340, 140)
 nodes/vertex/2/node = SubResource("VisualShaderNodeTexture2DParameter_cptrf")
-nodes/vertex/2/position = Vector2(-2340, -520)
+nodes/vertex/2/position = Vector2(-1640, -440)
 nodes/vertex/6/node = SubResource("VisualShaderNodeFloatParameter_02srf")
-nodes/vertex/6/position = Vector2(-540, -680)
-nodes/vertex/8/node = SubResource("VisualShaderNodeVectorDecompose_kt770")
-nodes/vertex/8/position = Vector2(-740, -160)
+nodes/vertex/6/position = Vector2(-1900, -240)
 nodes/vertex/9/node = SubResource("VisualShaderNodeInput_srkwl")
-nodes/vertex/9/position = Vector2(-2320, -600)
-nodes/vertex/10/node = SubResource("VisualShaderNodeVectorCompose_4n3o7")
-nodes/vertex/10/position = Vector2(-280, -320)
-nodes/vertex/12/node = SubResource("VisualShaderNodeFloatOp_sa0uu")
-nodes/vertex/12/position = Vector2(-720, -440)
+nodes/vertex/9/position = Vector2(-1180, -240)
 nodes/vertex/14/node = SubResource("VisualShaderNodeInput_vjo22")
-nodes/vertex/14/position = Vector2(-2200, -160)
+nodes/vertex/14/position = Vector2(-2160, 80)
 nodes/vertex/15/node = SubResource("VisualShaderNodeTexture2DParameter_lds7x")
-nodes/vertex/15/position = Vector2(-1500, 60)
+nodes/vertex/15/position = Vector2(-1460, 300)
 nodes/vertex/17/node = SubResource("VisualShaderNodeGlobalExpression_sb1cw")
-nodes/vertex/17/position = Vector2(-940, 260)
+nodes/vertex/17/position = Vector2(-900, 500)
 nodes/vertex/17/size = Vector2(553.167, 285.189)
 nodes/vertex/17/input_ports = ""
 nodes/vertex/17/output_ports = ""
@@ -360,30 +334,30 @@ normal.z = -normal.z;
 return normal;
 }"
 nodes/vertex/18/node = SubResource("VisualShaderNodeExpression_227sm")
-nodes/vertex/18/position = Vector2(-940, 40)
+nodes/vertex/18/position = Vector2(-900, 280)
 nodes/vertex/18/size = Vector2(1016.05, 213.493)
 nodes/vertex/18/input_ports = "0,3,UVoffset;1,8,normalmap_input;"
 nodes/vertex/18/output_ports = "0,4,NORMAL;"
 nodes/vertex/18/expression = "NORMAL = unpack_normalmap(texture(normalmap_input, UVoffset)) * u_terrain_normal_basis;"
 nodes/vertex/23/node = SubResource("VisualShaderNodeExpression_uwm1w")
-nodes/vertex/23/position = Vector2(-1940, -500)
-nodes/vertex/23/size = Vector2(1083.99, 302.141)
-nodes/vertex/23/input_ports = "0,4,VERTEX;1,8,heightmap;2,1,heightmap_mipmap_lvl;"
-nodes/vertex/23/output_ports = "0,0,vertex_y;"
+nodes/vertex/23/position = Vector2(-1180, -160)
+nodes/vertex/23/size = Vector2(1083.99, 413.266)
+nodes/vertex/23/input_ports = "0,4,VERTEX;1,8,heightmap;2,1,heightmap_mipmap_lvl;3,0,heightmap_height_value;"
+nodes/vertex/23/output_ports = "0,4,vertex_y;"
 nodes/vertex/23/expression = "vec3 world_vertex = VERTEX + MODEL_MATRIX[3].xyz + (float(textureSize(heightmap,heightmap_mipmap_lvl).x)/2.0);
 vec2 texture_position = world_vertex.xz/float(textureSize(heightmap,heightmap_mipmap_lvl).x);
-vertex_y = texture(heightmap, texture_position).g;"
+vertex_y = vec3(VERTEX.x, texture(heightmap, texture_position).g * heightmap_height_value, VERTEX.z);"
 nodes/vertex/24/node = SubResource("VisualShaderNodeFloatParameter_obei4")
-nodes/vertex/24/position = Vector2(-2200, -60)
+nodes/vertex/24/position = Vector2(-2160, 180)
 nodes/vertex/25/node = SubResource("VisualShaderNodeFloatParameter_p2ofv")
-nodes/vertex/25/position = Vector2(-2200, 220)
+nodes/vertex/25/position = Vector2(-2160, 460)
 nodes/vertex/29/node = SubResource("VisualShaderNodeUVFunc_6otf4")
-nodes/vertex/29/position = Vector2(-1500, -100)
+nodes/vertex/29/position = Vector2(-1460, 140)
 nodes/vertex/31/node = SubResource("VisualShaderNodeVectorCompose_n6p0k")
-nodes/vertex/31/position = Vector2(-1840, 40)
+nodes/vertex/31/position = Vector2(-1800, 280)
 nodes/vertex/32/node = SubResource("VisualShaderNodeIntParameter_scye6")
-nodes/vertex/32/position = Vector2(-2600, -520)
-nodes/vertex/connections = PackedInt32Array(10, 0, 0, 0, 6, 0, 12, 0, 12, 0, 10, 1, 9, 0, 23, 0, 2, 0, 23, 1, 9, 0, 8, 0, 23, 0, 12, 1, 8, 2, 10, 2, 8, 0, 10, 0, 14, 0, 29, 0, 24, 0, 31, 0, 25, 0, 31, 1, 31, 0, 29, 2, 32, 0, 23, 2, 15, 0, 18, 1, 29, 0, 18, 0, 18, 0, 0, 1)
+nodes/vertex/32/position = Vector2(-1900, -440)
+nodes/vertex/connections = PackedInt32Array(9, 0, 23, 0, 2, 0, 23, 1, 14, 0, 29, 0, 24, 0, 31, 0, 25, 0, 31, 1, 31, 0, 29, 2, 32, 0, 23, 2, 15, 0, 18, 1, 29, 0, 18, 0, 18, 0, 0, 1, 6, 0, 23, 3, 23, 0, 0, 0)
 nodes/fragment/2/node = SubResource("VisualShaderNodeExpression_1yx8p")
 nodes/fragment/2/position = Vector2(-1080, 580)
 nodes/fragment/2/size = Vector2(1007.76, 331.249)
