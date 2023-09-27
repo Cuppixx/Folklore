@@ -8,6 +8,8 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k74ls"]
 
 [node name="Character" type="CharacterBody3D"]
+floor_stop_on_slope = false
+floor_max_angle = 0.872665
 script = ExtResource("1_mj2w0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -22,3 +24,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.693095, 0)
 [node name="Camera3D" type="Camera3D" parent="Neck"]
 
 [node name="TerrainCollision" parent="." instance=ExtResource("2_wd2s3")]
+collision_square_size = 15
