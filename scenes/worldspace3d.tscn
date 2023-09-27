@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8uvtud87j7bm"]
+[gd_scene load_steps=7 format=3 uid="uid://c8uvtud87j7bm"]
 
 [ext_resource type="PackedScene" uid="uid://2q6yeun0jg1p" path="res://scenes/clipmap.tscn" id="1_5mt3c"]
 [ext_resource type="PackedScene" uid="uid://c3hn3635hgjk1" path="res://scenes/character.tscn" id="2_8tygs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ljl67"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ag1wv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -18,23 +20,37 @@ glow_enabled = true
 
 [node name="Worldspace3d" type="Node3D"]
 
-[node name="sun_rotation_offset" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+[node name="Clipmap" parent="." instance=ExtResource("1_5mt3c")]
+endless_terrain = true
+generate_lod = true
+grid_size = 8
+update_interval_sec = 2.0
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="sun_rotation_offset"]
-transform = Transform3D(1, 0, 0, 0, 0.730162, 0.683274, 0, -0.683274, 0.730162, 0, 0, 0)
+[node name="PlayerRegistry" type="Node" parent="."]
+
+[node name="Character" parent="PlayerRegistry" instance=ExtResource("2_8tygs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 138.232, 0)
+
+[node name="TEMP" type="Node" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TEMP"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 129.834, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TEMP/StaticBody3D"]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+shape = SubResource("BoxShape3D_ljl67")
+
+[node name="sun_rotation_offset" type="Node3D" parent="TEMP"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="TEMP/sun_rotation_offset"]
+transform = Transform3D(1, 0, 0, 0, 0.201078, -0.979575, 0, 0.979575, 0.201078, 0, 0, 0)
 light_energy = 0.8
 shadow_enabled = true
 shadow_blur = 4.0
 directional_shadow_split_3 = 0.3
 directional_shadow_blend_splits = true
+sky_mode = 1
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="TEMP"]
 environment = SubResource("Environment_taae7")
-
-[node name="Clipmap" parent="." instance=ExtResource("1_5mt3c")]
-
-[node name="PlayerRegistry" type="Node" parent="."]
-
-[node name="Character" parent="PlayerRegistry" instance=ExtResource("2_8tygs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 63.3222, 0)

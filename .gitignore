@@ -2,6 +2,7 @@
 .godot/
 
 # Godot-specific ignores
+resources/texture/
 .import/
 *.import
 export.cfg

@@ -8,6 +8,7 @@ const TERRAIN:Resource = preload("res://scenes/clipmap_mesh.tscn")
 var player_position:Vector3 = Vector3.ZERO
 
 @export var endless_terrain:bool = false
+@export var generate_lod:bool = false
 @export var grid_size:int = 0
 var timer = Timer.new()
 @export var update_interval_sec:float = 1.0
