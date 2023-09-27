@@ -22,4 +22,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.693095, 0)
 [node name="Camera3D" type="Camera3D" parent="Neck"]
 
 [node name="TerrainCollision" parent="." instance=ExtResource("2_wd2s3")]
-collision_square_size = 15
