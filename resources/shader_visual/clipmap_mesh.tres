@@ -112,6 +112,7 @@ expression = "NORMAL = unpack_normalmap_texture(texture(normalmap_input, UVoffse
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_cptrf"]
 parameter_name = "heightmap"
+texture_filter = 2
 
 [sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_uwm1w"]
 size = Vector2(1083.99, 413.266)
@@ -154,7 +155,7 @@ input_name = "vertex"
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_toon;
 
-uniform sampler2D heightmap;
+uniform sampler2D heightmap : filter_linear;
 uniform int heightmap_mipmap_lvl = 0;
 uniform float heightmap_height_value : hint_range(0, 500, 0.10000000149012);
 uniform float uv_x : hint_range(-100, 100, 0.0010000000475);
@@ -337,7 +338,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1221.48, -165.508)
+graph_offset = Vector2(-1816.69, -478.561)
 modes/specular = 1
 nodes/vertex/0/position = Vector2(340, 140)
 nodes/vertex/2/node = SubResource("VisualShaderNodeTexture2DParameter_cptrf")
