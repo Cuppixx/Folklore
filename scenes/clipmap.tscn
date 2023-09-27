@@ -7,4 +7,3 @@
 script = ExtResource("1_cnysx")
 
 [node name="ClipmapMesh" parent="." instance=ExtResource("2_ypvkj")]
-gi_mode = 0

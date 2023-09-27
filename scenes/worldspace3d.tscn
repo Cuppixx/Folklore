@@ -21,10 +21,6 @@ glow_enabled = true
 [node name="Worldspace3d" type="Node3D"]
 
 [node name="Clipmap" parent="." instance=ExtResource("1_5mt3c")]
-endless_terrain = true
-generate_lod = true
-grid_size = 8
-update_interval_sec = 2.0
 
 [node name="PlayerRegistry" type="Node" parent="."]
 
