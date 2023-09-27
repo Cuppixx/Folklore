@@ -92,3 +92,4 @@ occlusion_culling/use_occlusion_culling=true
 lights_and_shadows/positional_shadow/atlas_size=1024
 lights_and_shadows/positional_shadow/atlas_size.mobile=1024
 lights_and_shadows/positional_shadow/atlas_quadrant_0_subdiv=1
+environment/defaults/default_environment="res://resources/enviroment/default_enviroment.tres"
