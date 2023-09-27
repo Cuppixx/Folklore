@@ -41,6 +41,4 @@ func update_position() -> void:
 	self.global_position = player_position
 	terrain.material_override.set_shader_parameter("uv_x",player_position.x/mesh_size.x)
 	terrain.material_override.set_shader_parameter("uv_z",player_position.z/mesh_size.y)
-	terrain.material_override.set_shader_parameter("uv_x_frag",player_position.x/mesh_size.x)
-	terrain.material_override.set_shader_parameter("uv_z_frag",player_position.z/mesh_size.y)
 	timer.start()
