@@ -7,7 +7,6 @@ uniform sampler2D normalmap : filter_linear_mipmap_anisotropic, repeat_enable, h
 
 uniform int heightmap_mipmap_lvl;
 uniform float heightmap_height_value : hint_range(0.0, 500.0, 0.1);
-uniform float normalmap_depth_value : hint_range(0.0, 1.0, 0.001);
 
 uniform float uv_x : hint_range(-100.0, 100.0, 0.001);
 uniform float uv_z : hint_range(-100.0, 100.0, 0.001);
@@ -22,7 +21,7 @@ uniform float texture_UV_scale;
 uniform mat3 u_terrain_normal_basis;
 vec3 unpack_normalmap_texture(vec4 input_texture)
 {
-	vec3 normal = ((input_texture.xzy) * 2.0) - vec3(1.0);
+	vec3 normal = ((input_texture.xzy) * 2.0) - vec3(0.5);
 	normal.z = -normal.z;
 	return normal;
 }
@@ -44,11 +43,9 @@ void fragment() {
 	vec3 terrain_normal = unpack_normalmap_texture(texture(normalmap, UVoffset)) * u_terrain_normal_basis;
 	terrain_normal = normalize(terrain_normal);
 	NORMAL = (VIEW_MATRIX * (vec4(terrain_normal, 0.0))).xyz;
-	NORMAL_MAP = texture(normalmap, UVoffset).xyz;
-	NORMAL_MAP_DEPTH = normalmap_depth_value;
 
 	//Calculate Texture Positions
-	vec3 normal_albedo = unpack_normalmap_texture(texture(normalmap, UVoffset));
+	vec3 normal_albedo = normalize(texture(normalmap, UVoffset).xzy);
 
 	float coverage_plus_range = slope_coverage + texture_blend_range;
 	float weight = clamp((normal_albedo.y - slope_coverage) / (coverage_plus_range - slope_coverage), 0.0, 1.0);

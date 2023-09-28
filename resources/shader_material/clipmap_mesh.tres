@@ -3,19 +3,18 @@
 [ext_resource type="Shader" path="res://resources/shader/clipmap_mesh.gdshader" id="1_kbbv6"]
 [ext_resource type="Texture2D" uid="uid://b8s7ej5rfphb7" path="res://resources/texture/brown_mud_leaves_01_1k/textures/brown_mud_leaves_01_diff_1k.jpg" id="2_p0tvu"]
 [ext_resource type="Texture2D" uid="uid://b53o3xhviguqk" path="res://resources/texture/rocks_ground_08_1k/textures/rocks_ground_08_diff_1k.jpg" id="3_ovs3v"]
-[ext_resource type="Texture2D" uid="uid://crkaabmaw25i2" path="res://resources/heightmap/Flat2.png" id="4_hnqd7"]
-[ext_resource type="Texture2D" uid="uid://1uv2f56giuko" path="res://resources/normalmap/Flat2_nm.png" id="5_2owyr"]
+[ext_resource type="Texture2D" uid="uid://crkaabmaw25i2" path="res://resources/map_heightmap/Flat2.png" id="4_hnqd7"]
+[ext_resource type="Texture2D" uid="uid://1uv2f56giuko" path="res://resources/map_normalmap/Flat2_nm.png" id="5_2owyr"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_kbbv6")
 shader_parameter/heightmap_mipmap_lvl = 0
 shader_parameter/heightmap_height_value = 40.0
-shader_parameter/normalmap_depth_value = 0.188
 shader_parameter/uv_x = 4.75e-06
 shader_parameter/uv_z = 4.75e-06
 shader_parameter/slope_coverage = 0.888
-shader_parameter/texture_blend_range = 0.115
+shader_parameter/texture_blend_range = 0.07
 shader_parameter/texture_UV_scale = 88.0
 shader_parameter/u_terrain_normal_basis = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap = ExtResource("4_hnqd7")

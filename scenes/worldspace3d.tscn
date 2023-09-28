@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://2q6yeun0jg1p" path="res://scenes/clipmap.tscn" id="1_5mt3c"]
 [ext_resource type="PackedScene" uid="uid://c3hn3635hgjk1" path="res://scenes/character.tscn" id="2_8tygs"]
-[ext_resource type="Environment" uid="uid://dg5q01dg3xxw4" path="res://resources/enviroment/default_enviroment.tres" id="3_uo0rq"]
+[ext_resource type="Environment" uid="uid://dg5q01dg3xxw4" path="res://resources/environment/default_environment.tres" id="3_bm8iw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ljl67"]
 
@@ -13,7 +13,31 @@
 [node name="PlayerRegistry" type="Node" parent="."]
 
 [node name="Character" parent="PlayerRegistry" instance=ExtResource("2_8tygs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 138.232, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 138, 0)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = ExtResource("3_bm8iw")
+
+[node name="SunMoonRotationFix" type="Node3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0)
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment/SunMoonRotationFix"]
+transform = Transform3D(1, 0, 0, 0, 0.207912, 0.978147, 0, -0.978147, 0.207912, 0, 0, 0)
+light_energy = 1.1
+shadow_enabled = true
+shadow_blur = 1.5
+directional_shadow_split_3 = 0.3
+directional_shadow_blend_splits = true
+
+[node name="Moon" type="DirectionalLight3D" parent="Environment/SunMoonRotationFix"]
+visible = false
+light_energy = 1.1
+shadow_enabled = true
+shadow_blur = 1.5
+directional_shadow_split_3 = 0.3
+directional_shadow_blend_splits = true
 
 [node name="TEMP" type="Node" parent="."]
 
@@ -23,16 +47,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 129.834, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TEMP/StaticBody3D"]
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("BoxShape3D_ljl67")
-
-[node name="sun_rotation_offset" type="Node3D" parent="TEMP"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="TEMP/sun_rotation_offset"]
-transform = Transform3D(1, 0, 0, 0, -0.694658, 0.719339, 0, -0.719339, -0.694658, 0, 0, 0)
-shadow_enabled = true
-shadow_blur = 3.0
-directional_shadow_split_3 = 0.3
-directional_shadow_blend_splits = true
-sky_mode = 1
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="TEMP"]
-environment = ExtResource("3_uo0rq")

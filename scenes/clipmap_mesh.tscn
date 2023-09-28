@@ -8,5 +8,6 @@
 material_override = ExtResource("1_scfq5")
 cast_shadow = 0
 extra_cull_margin = 84.5
+gi_mode = 0
 mesh = ExtResource("1_dlk2f")
 script = ExtResource("1_uopr7")
