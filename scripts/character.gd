@@ -49,13 +49,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("change_fov"):
-		print(cam_state)
 		if cam_state == false:
-			print("TEST1")
 			cam_position = Vector3(0.0, 0.0, 0.0)
 			cam_state = true
 		else:
-			print("TEST2")
 			cam_position = Vector3(0.0, 0.5, 2.5)
 			cam_state = false
 
@@ -111,7 +108,7 @@ func _physics_process(delta: float) -> void:
 	#FOV Code
 	var velocity_clamped:float = clamp(velocity.length(), 0.5, SPEED_SPRINT * 2)
 	var target_fov = fov_base + FOV_MULTIPLY * velocity_clamped
-	camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
+	#camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 
 	move_and_slide()
 

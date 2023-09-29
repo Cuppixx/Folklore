@@ -1,8 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3hn3635hgjk1"]
+[gd_scene load_steps=8 format=3 uid="uid://bbonwc6tlp0h5"]
 
 [ext_resource type="Script" path="res://scripts/character.gd" id="1_mj2w0"]
+[ext_resource type="Shader" path="res://resources/shader/outline_local.gdshader" id="2_4wk1a"]
 [ext_resource type="CameraAttributesPractical" uid="uid://bsqfbjym4l7wl" path="res://resources/camera/cam_attribute_player.tres" id="2_5xes1"]
 [ext_resource type="PackedScene" uid="uid://cvv4y7bomy12c" path="res://scenes/terrain_collision.tscn" id="2_wd2s3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yavcv"]
+render_priority = 0
+shader = ExtResource("2_4wk1a")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_step_value = 0.01
+shader_parameter/outline_thickness = 3.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kfsqp"]
 
@@ -14,6 +22,7 @@ floor_max_angle = 0.872665
 script = ExtResource("1_mj2w0")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_yavcv")
 mesh = SubResource("CapsuleMesh_kfsqp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

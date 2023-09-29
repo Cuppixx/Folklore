@@ -1,0 +1,24 @@
+Character:
+	clean up character script
+	fix character fov affecting shadows
+	add statemachine
+	add more stuff
+	improve auto collision generation???
+
+World:
+	add different clipmap technique
+	add better shadows / shadow calculation
+
+Environment:
+	add day night cycle
+	add custom sky shader
+	add clouds -> static and dynamic
+	add different predefined environments
+
+Weather:
+	start on a weather system
+
+Shaders:
+	Work on the full outline shader (currently same as "normal" outline shader)
+	Figure out how pixelation works
+	add a grass shader
