@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://3tjb1hdo66pd"]
+[gd_scene load_steps=16 format=3 uid="uid://3tjb1hdo66pd"]
 
 [ext_resource type="Shader" path="res://resources/shader/chromatic_abberation.gdshader" id="1_twcmh"]
 [ext_resource type="Texture2D" uid="uid://cvjqai83m1wtd" path="res://resources/noisetexture/chromatic_offset.png" id="2_4ncmf"]
 [ext_resource type="Shader" path="res://resources/shader/vignette.gdshader" id="3_w0ulo"]
 [ext_resource type="Shader" path="res://resources/shader/pixelation_shader.gdshader" id="4_wua12"]
 [ext_resource type="Shader" path="res://resources/shader/speed_fx.gdshader" id="5_xajl2"]
+[ext_resource type="Shader" path="res://resources/shader/blurred_vision.gdshader" id="6_bgm38"]
+[ext_resource type="Shader" path="res://resources/shader/ripple.gdshader" id="7_ntlbr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5a43m"]
 shader = ExtResource("1_twcmh")
@@ -47,6 +49,18 @@ shader_parameter/mask_edge = 0.53
 shader_parameter/animation_speed = 14.0
 shader_parameter/noise = SubResource("NoiseTexture2D_pl673")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_emr6k"]
+shader = ExtResource("6_bgm38")
+shader_parameter/seed = 81.0
+shader_parameter/power = 0.004
+shader_parameter/speed = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_676ld"]
+shader = ExtResource("7_ntlbr")
+shader_parameter/wave_count = 20.0
+shader_parameter/speed = 3.0
+shader_parameter/height = 0.003
+
 [node name="ViewportOverlays" type="CanvasLayer"]
 follow_viewport_enabled = true
 
@@ -83,6 +97,25 @@ mouse_filter = 2
 [node name="SpeedFX" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_1mrpv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BlurredVision" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_emr6k")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Ripple" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_676ld")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
