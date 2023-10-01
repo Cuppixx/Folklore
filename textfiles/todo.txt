@@ -19,6 +19,4 @@ Weather:
 	start on a weather system
 
 Shaders:
-	Work on the full outline shader (currently same as "normal" outline shader)
-	Figure out how pixelation works
 	add a grass shader

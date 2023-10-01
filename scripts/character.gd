@@ -55,6 +55,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			cam_position = Vector3(0.0, 0.5, 2.5)
 			cam_state = false
+		camera.transform.origin = cam_position
 
 	#AutoWalk Code
 	if Input.is_action_just_pressed("auto_walk"):
@@ -75,12 +76,13 @@ func _physics_process(delta: float) -> void:
 	#Movement Code FirstPerson
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
-	if Input.is_action_pressed("move_up") and (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
-		speed_multiplier = speed_multiplier_forwards / 1.3
-	elif Input.is_action_pressed("move_up"):
-		speed_multiplier = speed_multiplier_forwards
-	else:
-		speed_multiplier = 0
+#	if Input.is_action_pressed("move_up") and (Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right")):
+#		speed_multiplier = speed_multiplier_forwards / 1.3
+#	elif Input.is_action_pressed("move_up"):
+#		speed_multiplier = speed_multiplier_forwards
+#	else:
+#		speed_multiplier = 0
+	speed_multiplier = speed_multiplier_forwards
 
 	direction = lerp(direction, (neck.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*lerp_speed)
 	if is_on_floor() == true:
@@ -103,7 +105,7 @@ func _physics_process(delta: float) -> void:
 		neck.rotation.z = lerp(neck.rotation.z, 0.0, 0.05)
 
 	bob_time += delta * velocity.length() * float(is_on_floor())
-	camera.transform.origin = cam_position + headbob(bob_time)
+	#camera.transform.origin = cam_position + headbob(bob_time)
 
 	#FOV Code
 	var velocity_clamped:float = clamp(velocity.length(), 0.5, SPEED_SPRINT * 2)

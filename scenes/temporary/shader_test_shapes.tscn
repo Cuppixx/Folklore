@@ -42,55 +42,106 @@ size = Vector3(3, 3, 3)
 
 [node name="ShaderTestShapes" type="Node3D"]
 
-[node name="Prism" type="MeshInstance3D" parent="."]
+[node name="Node" type="Node3D" parent="."]
+visible = false
+
+[node name="Prism" type="MeshInstance3D" parent="Node"]
 transform = Transform3D(0.955808, 0.29399, 0, -0.28331, 0.921086, -0.267087, -0.078521, 0.255284, 0.963672, 1.25929, 0.291197, -2.39825)
 material_override = SubResource("ShaderMaterial_4mkfs")
 mesh = SubResource("PrismMesh_8cx62")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Ball" type="MeshInstance3D" parent="."]
+[node name="Ball" type="MeshInstance3D" parent="Node"]
 transform = Transform3D(1, 0, 0, 0, -0.626944, 0.779064, 0, -0.779064, -0.626944, 0.0951144, 1.18228, -6.72325)
 material_override = SubResource("ShaderMaterial_4mkfs")
 mesh = SubResource("SphereMesh_htskv")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Torus" type="MeshInstance3D" parent="."]
+[node name="Torus" type="MeshInstance3D" parent="Node"]
 transform = Transform3D(0.788616, 0.414399, -0.454267, -0.605377, 0.652687, -0.455541, 0.107718, 0.63425, 0.765587, -0.633536, 0.120358, -3.46524)
 material_override = SubResource("ShaderMaterial_4mkfs")
 mesh = SubResource("TorusMesh_bbe2o")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Tube" type="MeshInstance3D" parent="."]
+[node name="Tube" type="MeshInstance3D" parent="Node"]
 transform = Transform3D(0.763819, 0, -0.645431, 0, 1, 0, 0.645431, 0, 0.763819, -2.26335, 0.243305, -4.3744)
 material_override = SubResource("ShaderMaterial_4mkfs")
 mesh = SubResource("TubeTrailMesh_tjv4h")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Capsule" type="MeshInstance3D" parent="."]
+[node name="Capsule" type="MeshInstance3D" parent="Node"]
 transform = Transform3D(0.966741, 0.226787, -0.118238, -0.249598, 0.937442, -0.242699, 0.0558008, 0.264139, 0.962869, -2.83866, 0.986747, -5.87182)
 material_override = SubResource("ShaderMaterial_4mkfs")
 mesh = SubResource("CapsuleMesh_85i04")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Text" type="MeshInstance3D" parent="."]
+[node name="Text" type="MeshInstance3D" parent="Node"]
 transform = Transform3D(0.956732, 0, -0.290969, 0, 1, 0, 0.290969, 0, 0.956732, -2.13383, -0.0704112, -2.52756)
 material_override = SubResource("ShaderMaterial_4mkfs")
 mesh = SubResource("TextMesh_kw2t3")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Cylinder" type="MeshInstance3D" parent="."]
+[node name="Cylinder" type="MeshInstance3D" parent="Node"]
 transform = Transform3D(0.874764, 0, -0.48455, 0, 1, 0, 0.48455, 0, 0.874764, 2.23752, 1.07187, -3.68947)
 material_override = SubResource("ShaderMaterial_4mkfs")
 mesh = SubResource("CylinderMesh_16ql5")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Box" type="MeshInstance3D" parent="."]
+[node name="Box" type="MeshInstance3D" parent="Node"]
 transform = Transform3D(0.862805, 0, -0.505537, -0.154792, 0.951969, -0.264186, 0.481256, 0.306194, 0.821364, 3.08872, -0.1, -2.54)
 material_override = SubResource("ShaderMaterial_4mkfs")
 mesh = SubResource("BoxMesh_x74yw")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="BoxII" type="MeshInstance3D" parent="."]
+[node name="BoxII" type="MeshInstance3D" parent="Node"]
 transform = Transform3D(0.940151, 0, 0.340757, -0.11253, 0.943899, 0.31047, -0.32164, -0.330234, 0.887408, 4.56141, 2.48113, -5.65145)
 material_override = SubResource("ShaderMaterial_olw4y")
 mesh = SubResource("BoxMesh_3lmmd")
+skeleton = NodePath("../..")
+
+[node name="Node2" type="Node3D" parent="."]
+
+[node name="Prism" type="MeshInstance3D" parent="Node2"]
+transform = Transform3D(0.955808, 0.29399, 0, -0.28331, 0.921086, -0.267087, -0.078521, 0.255284, 0.963672, 1.25929, 0.291197, -2.39825)
+mesh = SubResource("PrismMesh_8cx62")
+skeleton = NodePath("../../..")
+
+[node name="Ball" type="MeshInstance3D" parent="Node2"]
+transform = Transform3D(1, 0, 0, 0, -0.626944, 0.779064, 0, -0.779064, -0.626944, 0.0951144, 1.18228, -6.72325)
+mesh = SubResource("SphereMesh_htskv")
+skeleton = NodePath("../../..")
+
+[node name="Torus" type="MeshInstance3D" parent="Node2"]
+transform = Transform3D(0.788616, 0.414399, -0.454267, -0.605377, 0.652687, -0.455541, 0.107718, 0.63425, 0.765587, -0.633536, 0.120358, -3.46524)
+mesh = SubResource("TorusMesh_bbe2o")
+skeleton = NodePath("../../..")
+
+[node name="Tube" type="MeshInstance3D" parent="Node2"]
+transform = Transform3D(0.763819, 0, -0.645431, 0, 1, 0, 0.645431, 0, 0.763819, -2.26335, 0.243305, -4.3744)
+mesh = SubResource("TubeTrailMesh_tjv4h")
+skeleton = NodePath("../../..")
+
+[node name="Capsule" type="MeshInstance3D" parent="Node2"]
+transform = Transform3D(0.966741, 0.226787, -0.118238, -0.249598, 0.937442, -0.242699, 0.0558008, 0.264139, 0.962869, -2.83866, 0.986747, -5.87182)
+mesh = SubResource("CapsuleMesh_85i04")
+skeleton = NodePath("../../..")
+
+[node name="Text" type="MeshInstance3D" parent="Node2"]
+transform = Transform3D(0.956732, 0, -0.290969, 0, 1, 0, 0.290969, 0, 0.956732, -2.13383, -0.0704112, -2.52756)
+mesh = SubResource("TextMesh_kw2t3")
+skeleton = NodePath("../../..")
+
+[node name="Cylinder" type="MeshInstance3D" parent="Node2"]
+transform = Transform3D(0.874764, 0, -0.48455, 0, 1, 0, 0.48455, 0, 0.874764, 2.23752, 1.07187, -3.68947)
+mesh = SubResource("CylinderMesh_16ql5")
+skeleton = NodePath("../../..")
+
+[node name="Box" type="MeshInstance3D" parent="Node2"]
+transform = Transform3D(0.862805, 0, -0.505537, -0.154792, 0.951969, -0.264186, 0.481256, 0.306194, 0.821364, 3.08872, -0.1, -2.54)
+mesh = SubResource("BoxMesh_x74yw")
+skeleton = NodePath("../../..")
+
+[node name="BoxII" type="MeshInstance3D" parent="Node2"]
+transform = Transform3D(0.940151, 0, 0.340757, -0.11253, 0.943899, 0.31047, -0.32164, -0.330234, 0.887408, 4.56141, 2.48113, -5.65145)
+mesh = SubResource("BoxMesh_3lmmd")
+skeleton = NodePath("../..")

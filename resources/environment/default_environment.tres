@@ -11,6 +11,7 @@ width = 512
 use_hdr = true
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ag1wv"]
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
 
 [sub_resource type="Sky" id="Sky_qhhtk"]
 sky_material = SubResource("ProceduralSkyMaterial_ag1wv")

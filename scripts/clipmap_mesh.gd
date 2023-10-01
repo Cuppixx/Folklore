@@ -6,6 +6,8 @@ var lod:int
 var subdivisions:int
 
 @onready var parent_node:StaticBody3D = $".."
+@onready var generate_lod:bool = parent_node.generate_lod
+@onready var lod_cap:int = parent_node.lod_cap
 var mesh_square_size:int
 var mesh_square_size_list:Array
 var image_height:int
@@ -34,10 +36,13 @@ func _ready() -> void:
 	self.position = Vector3(x, 0, z) * mesh_square_size
 
 	#Calculate LOD
-	lod = max(abs(x),abs(z))
-	subdivisions = max((mesh_square_size / (pow(2.0, float(lod)))) -1, 0)
-	if lod == 0: subdivisions += mesh_square_size
-	else: pass
+	if generate_lod == true:
+		lod = max(abs(x),abs(z))
+		if lod > lod_cap: lod = lod_cap
+		subdivisions = max((mesh_square_size / (pow(2.0, float(lod)))) -1, 0)
+		if lod == 0: subdivisions += mesh_square_size
+		else: pass
+	else: subdivisions = mesh_square_size*2-1
 
 	#Set subdivisions based on LOD calculations
 	self.mesh.subdivide_width = subdivisions

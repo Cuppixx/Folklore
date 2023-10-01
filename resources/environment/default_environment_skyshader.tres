@@ -1,0 +1,118 @@
+[gd_resource type="Environment" load_steps=11 format=3 uid="uid://bckwhfhefd78o"]
+
+[ext_resource type="Shader" path="res://resources/shader/sky_default.gdshader" id="1_4qwxi"]
+
+[sub_resource type="Gradient" id="Gradient_kj5tt"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.0945946, 0.89527, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.0573298, 0.0573298, 0.0573298, 1, 0.959091, 0.959091, 0.959091, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_51pu5"]
+gradient = SubResource("Gradient_kj5tt")
+width = 512
+use_hdr = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ppe35"]
+noise_type = 3
+frequency = 0.008
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0axcj"]
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 0.34
+noise = SubResource("FastNoiseLite_ppe35")
+
+[sub_resource type="Gradient" id="Gradient_hnnv3"]
+offsets = PackedFloat32Array(0.809859, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4fcxp"]
+noise_type = 2
+frequency = 0.085
+fractal_type = 0
+cellular_jitter = 1.335
+domain_warp_type = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1qphe"]
+generate_mipmaps = false
+seamless_blend_skirt = 0.3
+color_ramp = SubResource("Gradient_hnnv3")
+noise = SubResource("FastNoiseLite_4fcxp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2gag3"]
+shader = ExtResource("1_4qwxi")
+shader_parameter/day_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+shader_parameter/day_top_color = Color(0.0392157, 0.305882, 0.403922, 1)
+shader_parameter/horizon_color_day = Color(0.0980392, 0.462745, 0.764706, 1)
+shader_parameter/sunset_bottom_color = Color(0.0980392, 0.0823529, 0.0666667, 1)
+shader_parameter/sunset_top_color = Color(0.0862745, 0.164706, 0.341176, 1)
+shader_parameter/horizon_color_sunset = Color(0.345098, 0.176471, 0.305882, 1)
+shader_parameter/night_bottom_color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+shader_parameter/night_top_color = Color(0.137255, 0.027451, 0.27451, 1)
+shader_parameter/horizon_color_night = Color(0.0196078, 0.215686, 0.392157, 1)
+shader_parameter/horizon_falloff = 0.0
+shader_parameter/sun_color = Color(1, 1, 0.890196, 1)
+shader_parameter/sun_size = 0.185
+shader_parameter/sun_blur = 0.183
+shader_parameter/moon_color = Color(0.396078, 0.454902, 0.662745, 1)
+shader_parameter/moon_size = 0.073
+shader_parameter/moon_blur = 0.08
+shader_parameter/moon_crescent_offset = 1.0
+shader_parameter/clouds_main_color = Color(0.533333, 0.533333, 0.533333, 1)
+shader_parameter/clouds_edge_color = Color(0, 0.470588, 0.619608, 1)
+shader_parameter/clouds_speed = 0.05
+shader_parameter/clouds_scale = 0.372
+shader_parameter/clouds_cutoff = 0.0
+shader_parameter/clouds_fuzziness = 1.0
+shader_parameter/clouds_distort_texture = SubResource("NoiseTexture2D_0axcj")
+shader_parameter/clouds_noise_texture = SubResource("NoiseTexture2D_0axcj")
+shader_parameter/stars_cutoff = 0.414
+shader_parameter/stars_speed = 0.0
+shader_parameter/stars_texture = SubResource("NoiseTexture2D_1qphe")
+
+[sub_resource type="Sky" id="Sky_qhhtk"]
+sky_material = SubResource("ShaderMaterial_2gag3")
+process_mode = 3
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 0.8
+sky = SubResource("Sky_qhhtk")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.8
+reflected_light_source = 2
+tonemap_mode = 3
+tonemap_white = 0.8
+ssr_enabled = true
+ssr_max_steps = 50
+ssao_enabled = true
+ssao_radius = 1.5
+ssao_intensity = 1.5
+ssao_detail = 1.5
+ssao_horizon = 0.44
+ssao_sharpness = 0.5
+ssao_light_affect = 1.0
+ssao_ao_channel_affect = 1.0
+ssil_enabled = true
+ssil_radius = 4.0
+ssil_sharpness = 0.5
+sdfgi_enabled = true
+sdfgi_min_cell_size = 1.37969
+sdfgi_energy = 0.58
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 0.75
+glow_strength = 1.1
+glow_mix = 0.0
+glow_bloom = 0.03
+glow_blend_mode = 0
+glow_map_strength = 0.0
+volumetric_fog_density = 0.0205
+volumetric_fog_emission = Color(1, 1, 1, 1)
+volumetric_fog_emission_energy = 0.15
+volumetric_fog_gi_inject = 1.35
+volumetric_fog_anisotropy = 0.1
+volumetric_fog_length = 40.0
+volumetric_fog_detail_spread = 1.51572
+adjustment_enabled = true
+adjustment_contrast = 1.05
+adjustment_color_correction = SubResource("GradientTexture1D_51pu5")

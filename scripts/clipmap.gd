@@ -8,7 +8,8 @@ const TERRAIN:Resource = preload("res://scenes/clipmap_mesh.tscn")
 var player_position:Vector3 = Vector3.ZERO
 
 @export var endless_terrain:bool = false
-@export var generate_lod:bool = false
+@export var generate_lod:bool = true
+@export var lod_cap:int
 @export var grid_size:int = 0
 var timer:Timer
 @export var update_interval_sec:float = 1.0
@@ -16,7 +17,7 @@ var timer:Timer
 const MESH_SQUARE_SIZE_DEFAULT:int = 512
 @export var mesh_square_size:int = MESH_SQUARE_SIZE_DEFAULT
 ##Any additional entries in mesh_square_size_list must follow the same patter. [br]Pattern: [...,128,256,512,1024,2048,...]
-@export var mesh_square_size_list:Array = [8,16,32,64,128,256,512,1024,2048,4096]
+@export var mesh_square_size_list:Array = [128,256,512,1024,2048]
 
 func _ready() -> void:
 	for x in range(-grid_size,grid_size+1):
