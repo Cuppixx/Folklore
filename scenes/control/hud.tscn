@@ -1,0 +1,581 @@
+[gd_scene load_steps=8 format=3 uid="uid://dircbex6fbel0"]
+
+[ext_resource type="Texture2D" uid="uid://vvj5hmehdme2" path="res://icon.svg" id="1_pxju2"]
+[ext_resource type="LabelSettings" uid="uid://2nnbshemm1vg" path="res://resources/label_setting/systemtime.tres" id="2_mggrk"]
+[ext_resource type="LabelSettings" uid="uid://clnyd06yex24t" path="res://resources/label_setting/moreHud_rowI.tres" id="2_ug6h0"]
+[ext_resource type="Script" path="res://scripts/crosshair.gd" id="3_wpowr"]
+[ext_resource type="LabelSettings" uid="uid://m2cxw0lo4g5n" path="res://resources/label_setting/moreHud_rowII.tres" id="4_je5py"]
+
+[sub_resource type="GDScript" id="GDScript_45on3"]
+script/source = "extends Label
+func _process(_delta: float) -> void:
+	set_text(Time.get_time_string_from_system() + \"  \" + Time.get_date_string_from_system())
+"
+
+[sub_resource type="GDScript" id="GDScript_gfqly"]
+script/source = "extends TextureRect
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+func _draw() -> void:
+	draw_line(Vector2(-160, 0), Vector2(160, 0), Color.WEB_GRAY, 3.0)
+"
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HudElements" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Bars" type="MarginContainer" parent="HudElements"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -121.0
+offset_right = 420.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HudElements/Bars"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Health" type="ProgressBar" parent="HudElements/Bars/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+value = 100.0
+
+[node name="Mana" type="ProgressBar" parent="HudElements/Bars/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+value = 100.0
+
+[node name="Stamina" type="ProgressBar" parent="HudElements/Bars/VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+value = 100.0
+
+[node name="Compass" type="MarginContainer" parent="HudElements"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -20.0
+offset_right = 400.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="Compass" type="TextureRect" parent="HudElements/Compass"]
+custom_minimum_size = Vector2(800, 20)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="EquipmentStatus" type="MarginContainer" parent="HudElements"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -270.0
+offset_right = 64.0
+offset_bottom = 270.0
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HudElements/EquipmentStatus"]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Head" type="TextureRect" parent="HudElements/EquipmentStatus/VBoxContainer"]
+custom_minimum_size = Vector2(80.49, 80.185)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Chest" type="TextureRect" parent="HudElements/EquipmentStatus/VBoxContainer"]
+custom_minimum_size = Vector2(80.49, 80.185)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Wings" type="TextureRect" parent="HudElements/EquipmentStatus/VBoxContainer"]
+custom_minimum_size = Vector2(80.49, 80.185)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Hands" type="TextureRect" parent="HudElements/EquipmentStatus/VBoxContainer"]
+custom_minimum_size = Vector2(80.49, 80.185)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Legs" type="TextureRect" parent="HudElements/EquipmentStatus/VBoxContainer"]
+custom_minimum_size = Vector2(80.49, 80.185)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Tail" type="TextureRect" parent="HudElements/EquipmentStatus/VBoxContainer"]
+custom_minimum_size = Vector2(80.49, 80.185)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Feet" type="TextureRect" parent="HudElements/EquipmentStatus/VBoxContainer"]
+custom_minimum_size = Vector2(80.49, 80.185)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Shield" type="TextureRect" parent="HudElements/EquipmentStatus/VBoxContainer"]
+custom_minimum_size = Vector2(80.49, 80.185)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="WeaponI" type="TextureRect" parent="HudElements/EquipmentStatus/VBoxContainer"]
+custom_minimum_size = Vector2(80.49, 80.185)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="WeaponII" type="TextureRect" parent="HudElements/EquipmentStatus/VBoxContainer"]
+custom_minimum_size = Vector2(80.49, 80.185)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="SystemTime" type="Label" parent="HudElements"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Real Life Time"
+label_settings = ExtResource("2_mggrk")
+script = SubResource("GDScript_45on3")
+
+[node name="IngameTime" type="MarginContainer" parent="HudElements"]
+layout_mode = 1
+offset_right = 269.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HudElements/IngameTime"]
+layout_mode = 2
+theme_override_constants/separation = 13
+
+[node name="Time" type="HBoxContainer" parent="HudElements/IngameTime/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Time" type="Label" parent="HudElements/IngameTime/HBoxContainer/Time"]
+layout_mode = 2
+text = "08:14"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="AmPm" type="Label" parent="HudElements/IngameTime/HBoxContainer/Time"]
+layout_mode = 2
+text = "AM"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="Date" type="HBoxContainer" parent="HudElements/IngameTime/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Weekday" type="Label" parent="HudElements/IngameTime/HBoxContainer/Date"]
+layout_mode = 2
+text = "Monday"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="Day" type="Label" parent="HudElements/IngameTime/HBoxContainer/Date"]
+layout_mode = 2
+text = "17"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="Month" type="Label" parent="HudElements/IngameTime/HBoxContainer/Date"]
+layout_mode = 2
+text = "October"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="Year" type="Label" parent="HudElements/IngameTime/HBoxContainer/Date"]
+layout_mode = 2
+text = "2034"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="MoonPhase" type="TextureRect" parent="HudElements/IngameTime/HBoxContainer"]
+custom_minimum_size = Vector2(32.26, 32.975)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="PopUpText" type="Label" parent="HudElements"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 200.075
+offset_bottom = 226.075
+grow_horizontal = 2
+text = "Discovered Creek Stone Camp."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenteredHudElements" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SmartCrosshair" type="TextureRect" parent="CenteredHudElements"]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("3_wpowr")
+
+[node name="MoreHud" type="Control" parent="CenteredHudElements"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Prompt" type="HBoxContainer" parent="CenteredHudElements/MoreHud"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="PromptKey" type="Label" parent="CenteredHudElements/MoreHud/Prompt"]
+layout_mode = 2
+text = "F"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="Description" type="Label" parent="CenteredHudElements/MoreHud/Prompt"]
+layout_mode = 2
+text = "-Take"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="ItemName" type="HBoxContainer" parent="CenteredHudElements/MoreHud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="ItemName" type="Label" parent="CenteredHudElements/MoreHud/ItemName"]
+layout_mode = 2
+text = "Ancient Armor of the Fey King"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="RowSeperationLine" type="TextureRect" parent="CenteredHudElements/MoreHud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gfqly")
+
+[node name="ItemDetails" type="HBoxContainer" parent="CenteredHudElements/MoreHud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Armor" type="HBoxContainer" parent="CenteredHudElements/MoreHud/ItemDetails"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Armor" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails/Armor"]
+layout_mode = 2
+text = "Armor:"
+label_settings = ExtResource("4_je5py")
+uppercase = true
+
+[node name="ArmorValue" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails/Armor"]
+layout_mode = 2
+text = "74"
+label_settings = ExtResource("2_ug6h0")
+uppercase = true
+
+[node name="Damage" type="HBoxContainer" parent="CenteredHudElements/MoreHud/ItemDetails"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Damage" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails/Damage"]
+layout_mode = 2
+text = "Damage:"
+label_settings = ExtResource("4_je5py")
+uppercase = true
+
+[node name="DamageValue" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails/Damage"]
+layout_mode = 2
+text = "43"
+label_settings = ExtResource("2_ug6h0")
+uppercase = true
+
+[node name="Weight" type="HBoxContainer" parent="CenteredHudElements/MoreHud/ItemDetails"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Weight" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails/Weight"]
+layout_mode = 2
+text = "Weight:"
+label_settings = ExtResource("4_je5py")
+uppercase = true
+
+[node name="WeightValue" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails/Weight"]
+layout_mode = 2
+text = "40"
+label_settings = ExtResource("2_ug6h0")
+uppercase = true
+
+[node name="Value" type="HBoxContainer" parent="CenteredHudElements/MoreHud/ItemDetails"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Value" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails/Value"]
+layout_mode = 2
+text = "Value:"
+label_settings = ExtResource("4_je5py")
+uppercase = true
+
+[node name="ValueValue" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails/Value"]
+layout_mode = 2
+text = "745"
+label_settings = ExtResource("2_ug6h0")
+uppercase = true
+
+[node name="ValueWeightRatio" type="HBoxContainer" parent="CenteredHudElements/MoreHud/ItemDetails"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ValueWeightRatio" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails/ValueWeightRatio"]
+layout_mode = 2
+text = "V/W:"
+label_settings = ExtResource("4_je5py")
+uppercase = true
+
+[node name="ValueWeightRatioValue" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails/ValueWeightRatio"]
+layout_mode = 2
+text = "18"
+label_settings = ExtResource("2_ug6h0")
+uppercase = true
+
+[node name="ItemTypeInformation" type="Label" parent="CenteredHudElements/MoreHud/ItemDetails"]
+layout_mode = 2
+text = "Heavy Armor"
+label_settings = ExtResource("4_je5py")
+uppercase = true
+
+[node name="ItemInformationIcon" type="TextureRect" parent="CenteredHudElements/MoreHud/ItemDetails"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="EffectsList" type="VBoxContainer" parent="CenteredHudElements/MoreHud"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 30.0
+offset_bottom = 11.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="EffectI" type="HBoxContainer" parent="CenteredHudElements/MoreHud/EffectsList"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenteredHudElements/MoreHud/EffectsList/EffectI"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="CenteredHudElements/MoreHud/EffectsList/EffectI"]
+layout_mode = 2
+text = "Frost Resistance"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="EffectII" type="HBoxContainer" parent="CenteredHudElements/MoreHud/EffectsList"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenteredHudElements/MoreHud/EffectsList/EffectII"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="CenteredHudElements/MoreHud/EffectsList/EffectII"]
+layout_mode = 2
+text = "Invisibilty"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="EffectIII" type="HBoxContainer" parent="CenteredHudElements/MoreHud/EffectsList"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenteredHudElements/MoreHud/EffectsList/EffectIII"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Label3" type="Label" parent="CenteredHudElements/MoreHud/EffectsList/EffectIII"]
+layout_mode = 2
+text = "Resist frost"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="EffectIV" type="HBoxContainer" parent="CenteredHudElements/MoreHud/EffectsList"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenteredHudElements/MoreHud/EffectsList/EffectIV"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+texture = ExtResource("1_pxju2")
+expand_mode = 1
+
+[node name="Label4" type="Label" parent="CenteredHudElements/MoreHud/EffectsList/EffectIV"]
+layout_mode = 2
+text = "Lightning that does 8 points of shock damage to Health and Magicka per second"
+label_settings = ExtResource("2_ug6h0")
+
+[node name="MoreHudInventoryDisplay" type="MarginContainer" parent="."]
+layout_direction = 3
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -26.0
+offset_right = 465.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_right = 18
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MoreHudInventoryDisplay"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="Gold" type="HBoxContainer" parent="MoreHudInventoryDisplay/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Goldvalue" type="Label" parent="MoreHudInventoryDisplay/VBoxContainer/Gold"]
+layout_mode = 2
+text = "1383"
+
+[node name="Gold" type="Label" parent="MoreHudInventoryDisplay/VBoxContainer/Gold"]
+layout_mode = 2
+text = "Gold:"
+label_settings = ExtResource("4_je5py")
+
+[node name="CarryWeight" type="HBoxContainer" parent="MoreHudInventoryDisplay/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="CarryWeightValueMax" type="Label" parent="MoreHudInventoryDisplay/VBoxContainer/CarryWeight"]
+layout_mode = 2
+text = "/ 300"
+
+[node name="CarryWeightValue" type="Label" parent="MoreHudInventoryDisplay/VBoxContainer/CarryWeight"]
+layout_mode = 2
+text = "187"
+
+[node name="CarryWeight" type="Label" parent="MoreHudInventoryDisplay/VBoxContainer/CarryWeight"]
+layout_mode = 2
+text = "Carry Weight:"
+label_settings = ExtResource("4_je5py")
+
+[node name="Armor" type="HBoxContainer" parent="MoreHudInventoryDisplay/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ArmorValue" type="Label" parent="MoreHudInventoryDisplay/VBoxContainer/Armor"]
+layout_mode = 2
+text = "+15"
+
+[node name="Armor" type="Label" parent="MoreHudInventoryDisplay/VBoxContainer/Armor"]
+layout_mode = 2
+text = "Armor:"
+label_settings = ExtResource("4_je5py")
+
+[node name="Damage" type="HBoxContainer" parent="MoreHudInventoryDisplay/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="DamageValue" type="Label" parent="MoreHudInventoryDisplay/VBoxContainer/Damage"]
+layout_mode = 2
+text = "0"
+
+[node name="Damage" type="Label" parent="MoreHudInventoryDisplay/VBoxContainer/Damage"]
+layout_mode = 2
+text = "Damage:"
+label_settings = ExtResource("4_je5py")

@@ -1,0 +1,11 @@
+[gd_resource type="Environment" format=3 uid="uid://ciiv3lhelqrs0"]
+
+[resource]
+background_mode = 3
+tonemap_mode = 3
+tonemap_white = 0.75
+glow_enabled = true
+glow_blend_mode = 0
+glow_hdr_threshold = 1.5
+fog_density = 1.0
+volumetric_fog_density = 1.0

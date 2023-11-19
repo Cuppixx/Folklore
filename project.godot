@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Folklore"
-config/tags=PackedStringArray("under_development")
+config/tags=PackedStringArray("3d", "under_development")
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 run/max_fps=144
@@ -23,6 +23,12 @@ config/icon="res://icon.svg"
 driver/enable_input=true
 buses/channel_disable_threshold_db=-58.0
 
+[autoload]
+
+SignalEventBus="*res://scripts/autoload/signal_event_bus.gd"
+SignalAudioBus="*res://scripts/autoload/signal_audio_bus.gd"
+SaveSystem="*res://scripts/autoload/save_system.gd"
+
 [debug]
 
 settings/profiler/max_functions=15384
@@ -31,6 +37,7 @@ settings/profiler/max_functions=15384
 
 window/size/viewport_width=2560
 window/size/viewport_height=1440
+window/size/mode=4
 
 [dotnet]
 
@@ -94,21 +101,23 @@ reflections/sky_reflections/ggx_samples.mobile=8
 reflections/reflection_atlas/reflection_size=128
 reflections/reflection_atlas/reflection_count=50
 global_illumination/gi/use_half_resolution=true
+camera/depth_of_field/depth_of_field_bokeh_shape=0
+camera/depth_of_field/depth_of_field_bokeh_quality=0
 camera/depth_of_field/depth_of_field_use_jitter=true
+environment/ssao/quality=1
+environment/ssil/quality=1
 scaling_3d/mode=1
-environment/screen_space_reflection/roughness_quality=2
-environment/subsurface_scattering/subsurface_scattering_quality=2
+environment/glow/upscale_mode=0
 global_illumination/sdfgi/probe_ray_count=0
 global_illumination/sdfgi/frames_to_converge=3
 global_illumination/sdfgi/frames_to_update_lights=3
 environment/volumetric_fog/volume_size=50
 environment/volumetric_fog/volume_depth=50
 environment/volumetric_fog/use_filter=0
-anti_aliasing/quality/msaa_2d=2
-anti_aliasing/quality/msaa_3d=2
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/msaa_3d=1
 anti_aliasing/quality/screen_space_aa=1
 anti_aliasing/quality/use_taa=true
 occlusion_culling/use_occlusion_culling=true
 lights_and_shadows/positional_shadow/atlas_size=2048
 lights_and_shadows/positional_shadow/atlas_size.mobile=1024
-environment/defaults/default_environment="res://resources/environment/default_environment_skyshader.tres"

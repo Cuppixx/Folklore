@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvv4y7bomy12c"]
+
+[ext_resource type="Script" path="res://scripts/terrain_collision.gd" id="1_xrxni"]
+[ext_resource type="Script" path="res://scripts/terrain_collision_shape.gd" id="2_ex0s2"]
+
+[node name="TerrainCollision" type="StaticBody3D"]
+script = ExtResource("1_xrxni")
+
+[node name="TerrainCollisionShape" type="CollisionShape3D" parent="."]
+script = ExtResource("2_ex0s2")

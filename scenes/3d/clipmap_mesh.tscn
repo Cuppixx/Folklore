@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1adkfdv2yl2g"]
+
+[ext_resource type="QuadMesh" uid="uid://cm0i6dor2h3st" path="res://resources/mesh/clipmap_mesh_preview.tres" id="1_dlk2f"]
+[ext_resource type="Material" uid="uid://d2yyg25vw0i8t" path="res://resources/shader_material/clipmap_mesh.tres" id="1_scfq5"]
+[ext_resource type="Script" path="res://scripts/clipmap_mesh.gd" id="1_uopr7"]
+
+[node name="ClipmapMesh" type="MeshInstance3D"]
+material_override = ExtResource("1_scfq5")
+cast_shadow = 0
+extra_cull_margin = 84.5
+gi_mode = 0
+mesh = ExtResource("1_dlk2f")
+script = ExtResource("1_uopr7")

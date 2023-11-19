@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6ovmrhag6j32"]
+
+[ext_resource type="Script" path="res://scripts/mouse_state_logic.gd" id="1_8bjsu"]
+
+[node name="MouseStateLogic" type="Node"]
+script = ExtResource("1_8bjsu")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://2q6yeun0jg1p"]
+
+[ext_resource type="Script" path="res://scripts/clipmap.gd" id="1_cnysx"]
+[ext_resource type="PackedScene" uid="uid://c1adkfdv2yl2g" path="res://scenes/3d/clipmap_mesh.tscn" id="2_ypvkj"]
+
+[node name="Clipmap" type="StaticBody3D"]
+script = ExtResource("1_cnysx")
+
+[node name="ClipmapMesh" parent="." instance=ExtResource("2_ypvkj")]

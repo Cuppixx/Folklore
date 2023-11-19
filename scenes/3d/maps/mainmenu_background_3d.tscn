@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvmxfsqocj6qg"]
+
+[ext_resource type="PackedScene" uid="uid://2q6yeun0jg1p" path="res://scenes/3d/clipmap.tscn" id="1_5oogx"]
+[ext_resource type="Script" path="res://scripts/mainmenu_background_3d.gd" id="1_vthw8"]
+[ext_resource type="PackedScene" uid="uid://c5hsynn8kf5aa" path="res://scenes/3d/3d_environment_manager.tscn" id="2_m45tv"]
+
+[node name="MainmenuBg3d" type="Node3D"]
+script = ExtResource("1_vthw8")
+
+[node name="Clipmap" parent="." instance=ExtResource("1_5oogx")]
+lod_cap = 8
+grid_size = 8
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.575105, 0, 0.818079, 0, 1, 0, -0.818079, 0, 0.575105, 0, 39.8714, 0)
+
+[node name="3dEnvironmentManager" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_m45tv")]
+camera = NodePath("../Camera3D")

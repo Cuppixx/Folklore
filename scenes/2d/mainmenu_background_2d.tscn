@@ -1,0 +1,199 @@
+[gd_scene load_steps=14 format=3 uid="uid://dapftonlikoj5"]
+
+[ext_resource type="Texture2D" uid="uid://bnxh23efqxp31" path="res://resources/artwork/1334498.png" id="1_0csps"]
+[ext_resource type="Script" path="res://scripts/mainmenu_background_2d.gd" id="1_oiqm2"]
+[ext_resource type="Texture2D" uid="uid://dwlpmm4liw57k" path="res://resources/particles/trace_01.png" id="2_fqpw1"]
+[ext_resource type="Texture2D" uid="uid://8iruh5uysxbb" path="res://resources/particles/spark_05.png" id="3_j1ld5"]
+[ext_resource type="Texture2D" uid="uid://cj8d1ao4chluv" path="res://resources/particles/spark_06.png" id="4_e5c2l"]
+[ext_resource type="Texture2D" uid="uid://d2jwssa1sy62h" path="res://resources/particles/spark_02.png" id="4_sbfkh"]
+[ext_resource type="Texture2D" uid="uid://cufd4lc5ss1sb" path="res://resources/particles/smoke_07.png" id="6_u42v0"]
+[ext_resource type="Texture2D" uid="uid://m03ysiegt5ve" path="res://resources/particles/spark_04.png" id="8_5sld8"]
+[ext_resource type="Texture2D" uid="uid://beymyj6bx4hm8" path="res://resources/particles/smoke_08.png" id="9_s4vmp"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lcpxc"]
+emission_shape = 3
+emission_box_extents = Vector3(1440, 100, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 3.0
+scale_max = 3.8
+color = Color(1.7, 1.87, 1.4, 0.81)
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+attractor_interaction_enabled = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ib6f5"]
+lifetime_randomness = 0.55
+emission_shape = 3
+emission_box_extents = Vector3(1440, 15, 1)
+particle_flag_disable_z = true
+gravity = Vector3(-17, 170, 0)
+initial_velocity_max = 10.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.2
+scale_max = 0.4
+color = Color(0.894118, 0.980392, 0.996078, 0.227451)
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+turbulence_enabled = true
+turbulence_noise_scale = 8.88
+turbulence_noise_speed_random = 0.01
+turbulence_influence_min = 0.01
+turbulence_influence_max = 0.02
+attractor_interaction_enabled = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u6bnf"]
+emission_shape = 3
+emission_box_extents = Vector3(1440, 100, 1)
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 20.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0.054902, 0.054902, 0.176471, 0.901961)
+hue_variation_min = -0.5
+hue_variation_max = 1.0
+attractor_interaction_enabled = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xb0xs"]
+emission_shape = 3
+emission_box_extents = Vector3(1440, 20, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_min = 47.0
+angle_max = 180.0
+scale_max = 1.5
+color = Color(1.7, 1.87, 1.4, 0.81)
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+attractor_interaction_enabled = false
+
+[node name="MainmenuBg2d" type="Node2D"]
+script = ExtResource("1_oiqm2")
+
+[node name="BackgroundCanvas" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Image" type="TextureRect" parent="BackgroundCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_0csps")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="BackgroundCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LightningMain" type="GPUParticles2D" parent="BackgroundCanvas/CenterContainer"]
+position = Vector2(1280, 720)
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_lcpxc")
+texture = ExtResource("3_j1ld5")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.7
+randomness = 0.04
+
+[node name="LightningMainII" type="GPUParticles2D" parent="BackgroundCanvas/CenterContainer"]
+position = Vector2(1280, 720)
+emitting = false
+amount = 2
+process_material = SubResource("ParticleProcessMaterial_lcpxc")
+texture = ExtResource("4_e5c2l")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.7
+randomness = 0.04
+
+[node name="ControlTop" type="Control" parent="BackgroundCanvas"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Rain" type="GPUParticles2D" parent="BackgroundCanvas/ControlTop"]
+position = Vector2(45, -40)
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_ib6f5")
+texture = ExtResource("2_fqpw1")
+lifetime = 7.0
+preprocess = 3.0
+speed_scale = 10.0
+explosiveness = 0.2
+randomness = 0.55
+draw_order = 2
+trail_enabled = true
+trail_lifetime = 0.4
+trail_sections = 3
+trail_section_subdivisions = 40
+
+[node name="CloudsBase" type="GPUParticles2D" parent="BackgroundCanvas/ControlTop"]
+position = Vector2(-400, 80)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_u6bnf")
+texture = ExtResource("6_u42v0")
+lifetime = 70.0
+preprocess = 100.0
+
+[node name="LightningSub" type="GPUParticles2D" parent="BackgroundCanvas/ControlTop"]
+position = Vector2(0, 130)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_xb0xs")
+texture = ExtResource("4_sbfkh")
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.2
+randomness = 0.04
+
+[node name="LightningSubII" type="GPUParticles2D" parent="BackgroundCanvas/ControlTop"]
+position = Vector2(0, 130)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_xb0xs")
+texture = ExtResource("8_5sld8")
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.2
+randomness = 0.04
+
+[node name="CloudsOverlay" type="GPUParticles2D" parent="BackgroundCanvas/ControlTop"]
+position = Vector2(-400, 80)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_u6bnf")
+texture = ExtResource("9_s4vmp")
+lifetime = 70.0
+preprocess = 100.0
+
+[node name="TimerContainer" type="Node" parent="."]
+
+[node name="TimerLightningOne" type="Timer" parent="TimerContainer"]
+wait_time = 0.5
+autostart = true
+
+[node name="TimerLightningTwo" type="Timer" parent="TimerContainer"]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="TimerContainer/TimerLightningOne" to="." method="_on_timer_lightning_main_timeout"]
+[connection signal="timeout" from="TimerContainer/TimerLightningTwo" to="." method="_on_timer_lightning_secd_timeout"]

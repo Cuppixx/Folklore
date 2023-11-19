@@ -1,10 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://d2yyg25vw0i8t"]
 
 [ext_resource type="Shader" path="res://resources/shader/clipmap_mesh.gdshader" id="1_kbbv6"]
-[ext_resource type="Texture2D" uid="uid://b8s7ej5rfphb7" path="res://resources/texture/brown_mud_leaves_01_1k/textures/brown_mud_leaves_01_diff_1k.jpg" id="2_p0tvu"]
+[ext_resource type="Texture2D" uid="uid://0f0bwtkop4rn" path="res://resources/texture/textures/Material.003_diffuse.png" id="2_mhwpl"]
 [ext_resource type="Texture2D" uid="uid://crkaabmaw25i2" path="res://resources/map_heightmap/Flat_II.png" id="3_1bech"]
-[ext_resource type="Texture2D" uid="uid://b53o3xhviguqk" path="res://resources/texture/rocks_ground_08_1k/textures/rocks_ground_08_diff_1k.jpg" id="3_ovs3v"]
 [ext_resource type="Texture2D" uid="uid://1uv2f56giuko" path="res://resources/map_normalmap/Flat_II.png" id="4_mlj1h"]
+[ext_resource type="Texture2D" uid="uid://dlayntol3wgr4" path="res://resources/texture/textures/Material.012_diffuse.png" id="5_6mjqm"]
 
 [resource]
 render_priority = 0
@@ -15,9 +15,9 @@ shader_parameter/uv_x = 4.75e-06
 shader_parameter/uv_z = 4.75e-06
 shader_parameter/slope_coverage = 0.888
 shader_parameter/texture_blend_range = 0.07
-shader_parameter/texture_UV_scale = 88.0
+shader_parameter/texture_UV_scale = 300.0
 shader_parameter/u_terrain_normal_basis = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
 shader_parameter/heightmap = ExtResource("3_1bech")
 shader_parameter/normalmap = ExtResource("4_mlj1h")
-shader_parameter/base_texture = ExtResource("2_p0tvu")
-shader_parameter/slope_texture = ExtResource("3_ovs3v")
+shader_parameter/base_texture = ExtResource("2_mhwpl")
+shader_parameter/slope_texture = ExtResource("5_6mjqm")

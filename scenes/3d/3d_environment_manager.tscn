@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5hsynn8kf5aa"]
+
+[ext_resource type="Script" path="res://scripts/environment_manager_3d.gd" id="1_sdy4c"]
+[ext_resource type="Environment" uid="uid://bckwhfhefd78o" path="res://resources/environment/default_environment_skyshader.tres" id="2_ubhhg"]
+[ext_resource type="Shader" path="res://resources/shader/lens_flare.gdshader" id="3_b1mib"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iggtm"]
+shader = ExtResource("3_b1mib")
+shader_parameter/sun_position = Vector2(0, 0)
+shader_parameter/tint = Vector3(1.4, 1.2, 1)
+
+[node name="3dEnvironmentManager" type="Node"]
+script = ExtResource("1_sdy4c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_ubhhg")
+
+[node name="WorldTime" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="SunMoonRotationFix" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0)
+
+[node name="Sun" type="DirectionalLight3D" parent="SunMoonRotationFix"]
+light_color = Color(0.811765, 0.811765, 0.811765, 1)
+light_energy = 0.7
+directional_shadow_blend_splits = true
+
+[node name="Moon" type="DirectionalLight3D" parent="SunMoonRotationFix"]
+light_color = Color(0.513726, 0.666667, 0.721569, 1)
+light_energy = 0.185
+light_indirect_energy = 0.37
+light_volumetric_fog_energy = 1.5
+directional_shadow_blend_splits = true
+
+[node name="SunFlare" type="CanvasLayer" parent="."]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="SunFlare" type="ColorRect" parent="SunFlare"]
+material = SubResource("ShaderMaterial_iggtm")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="timeout" from="WorldTime" to="." method="_on_world_time_timeout"]

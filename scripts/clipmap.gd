@@ -1,10 +1,10 @@
 extends StaticBody3D
 
-const TERRAIN:Resource = preload("res://scenes/clipmap_mesh.tscn")
+const TERRAIN:Resource = preload("res://scenes/3d/clipmap_mesh.tscn")
 @onready var terrain:MeshInstance3D = $ClipmapMesh
 @onready var mesh_size:Vector2 = Vector2.ONE * terrain.mesh_square_size
 
-@onready var player:CharacterBody3D = $"../PlayerRegistry/Character"
+var player:CharacterBody3D
 var player_position:Vector3 = Vector3.ZERO
 
 @export var endless_terrain:bool = false
@@ -30,6 +30,7 @@ func _ready() -> void:
 				add_child(terrain_partition)
 
 	if endless_terrain == true:
+		player = $"../PlayerRegistry/Character"
 		timer = Timer.new()
 		add_child(timer)
 		timer.timeout.connect(update_position)

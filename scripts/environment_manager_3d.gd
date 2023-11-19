@@ -1,14 +1,15 @@
 extends Node
 
+class_name environment_manager
 
-@onready var camera = $"../PlayerRegistry/Character/Neck/Camera3D"
+@export var camera:Camera3D
 @onready var sun = $"SunMoonRotationFix/Sun"
 var visible:bool
 var sun_direction:Vector3
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 func _process(_delta: float) -> void:
 	sun_direction = sun.global_transform.basis.z * maxf(camera.near, 1.0)

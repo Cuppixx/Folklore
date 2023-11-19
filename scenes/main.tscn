@@ -1,13 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://pwtt18x72g0k"]
+[gd_scene load_steps=2 format=3 uid="uid://pwtt18x72g0k"]
 
-[ext_resource type="PackedScene" uid="uid://c8uvtud87j7bm" path="res://scenes/worldspace3d.tscn" id="1_dtod2"]
-[ext_resource type="PackedScene" uid="uid://b16cmn34hmgxc" path="res://scenes/worldspace2d.tscn" id="2_vgkns"]
-[ext_resource type="PackedScene" uid="uid://covyu3hq0ynwh" path="res://scenes/interface.tscn" id="3_oit3u"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_u635j"]
 
 [node name="Main" type="Node"]
-
-[node name="Worldspace3d" parent="." instance=ExtResource("1_dtod2")]
-
-[node name="Worldspace2d" parent="." instance=ExtResource("2_vgkns")]
-
-[node name="Interface" parent="." instance=ExtResource("3_oit3u")]
+script = ExtResource("1_u635j")

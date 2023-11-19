@@ -39,7 +39,7 @@ var auto_walk:bool = false
 @onready var camera:Camera3D = $Neck/Camera3D
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	SignalEventBus.emit_signal("set_mouse_mode", true)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -48,6 +48,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(cam_ego_clampDown) * -1, deg_to_rad(cam_ego_clampUp))
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		SignalEventBus.emit_signal("set_mainmenu", true)
+		SignalEventBus.emit_signal("clear_main")
+
 	if Input.is_action_just_pressed("change_fov"):
 		if cam_state == false:
 			cam_position = Vector3(0.0, 0.0, 0.0)
