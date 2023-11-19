@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://04yng7e6yhxr"]
+
+[ext_resource type="PackedScene" uid="uid://2q6yeun0jg1p" path="res://scenes/3d/clipmap.tscn" id="1_d71to"]
+[ext_resource type="PackedScene" uid="uid://bbonwc6tlp0h5" path="res://scenes/3d/character.tscn" id="2_xmb63"]
+[ext_resource type="PackedScene" uid="uid://c5hsynn8kf5aa" path="res://scenes/3d/3d_environment_manager.tscn" id="3_6xsag"]
+[ext_resource type="PackedScene" uid="uid://b21bnrx0i5bfk" path="res://scenes/temporary/shader_test_shapes.tscn" id="4_qdxw7"]
+
+[node name="Worldspace3d" type="Node3D"]
+
+[node name="MapManager" type="Node3D" parent="."]
+
+[node name="Clipmap" parent="." instance=ExtResource("1_d71to")]
+
+[node name="PlayerRegistry" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Character" parent="PlayerRegistry" instance=ExtResource("2_xmb63")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.5222, 0)
+
+[node name="3dEnvironmentManager" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_6xsag")]
+camera = NodePath("../PlayerRegistry/Character/Neck/Camera3D")
+
+[node name="ShaderTestShapes" parent="." instance=ExtResource("4_qdxw7")]
+transform = Transform3D(0.998645, 0.0520397, 0, -0.0520168, 0.998206, 0.0296662, 0.00154382, -0.029626, 0.99956, -9.81018, 35.0988, 0)
+
+[editable path="PlayerRegistry/Character"]
