@@ -26,18 +26,18 @@ func _process(_delta: float) -> void:
 
 func _on_world_time_timeout() -> void:
 	rot_axis.rotate_x(deg_to_rad(1))
-	print("ROTATION	"+str(rad_to_deg(rot_axis.global_rotation.x)))
-	print("SUN		"+str(rad_to_deg(sun.global_rotation.x)))
-	print("MOON		"+str(rad_to_deg(moon.global_rotation.x)))
+	#print("ROTATION	"+str(rad_to_deg(rot_axis.global_rotation.x)))
+	#print("SUN		"+str(rad_to_deg(sun.global_rotation.x)))
+	#print("MOON		"+str(rad_to_deg(moon.global_rotation.x)))
 
 	if is_equal_approx(rad_to_deg(rot_axis.global_rotation.x), 90.0):
 		sun.light_energy = 0
 		moon.light_energy = moon_energy
-		print("------------------------------------------------------SUNDOWN")
+		#print("------------------------------------------------------SUNDOWN")
 	if is_equal_approx(rad_to_deg(rot_axis.global_rotation.x), -90.0):
 		sun.light_energy = sun_energy
 		moon.light_energy = 0
-		print("------------------------------------------------------SUNDUP")
+		#print("------------------------------------------------------SUNDUP")
 
 	if rot_axis.rotation.x >= 360:
 		rot_axis.rotation.x = 0
