@@ -20,18 +20,21 @@ wait_time = 0.25
 autostart = true
 
 [node name="SunMoonRotationFix" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 100, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100, 0)
 
 [node name="Sun" type="DirectionalLight3D" parent="SunMoonRotationFix"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 light_color = Color(0.811765, 0.811765, 0.811765, 1)
 light_energy = 0.7
+shadow_enabled = true
 directional_shadow_blend_splits = true
 
 [node name="Moon" type="DirectionalLight3D" parent="SunMoonRotationFix"]
-light_color = Color(0.513726, 0.666667, 0.721569, 1)
-light_energy = 0.185
-light_indirect_energy = 0.37
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+light_color = Color(0.192157, 0.286275, 0.321569, 1)
+light_energy = 0.385
 light_volumetric_fog_energy = 1.5
+shadow_enabled = true
 directional_shadow_blend_splits = true
 
 [node name="SunFlare" type="CanvasLayer" parent="."]

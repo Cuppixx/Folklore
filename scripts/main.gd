@@ -70,6 +70,7 @@ func quit_game() -> void:
 
 func clear_main() -> void: for node in get_children(false): node.queue_free()
 
+#TODO setup link to map manager
 func new_game(tutorial:bool) -> void:
 	add_child(WORLDSPACE3D.instantiate(),false,INTERNAL_D)
 	#custom_add_child(WORLDSPACE3D,false,INTERNAL_D)
