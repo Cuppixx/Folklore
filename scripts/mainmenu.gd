@@ -28,9 +28,7 @@ const PHASE0TEXT_BACK:String = "Back"
 @export var menu_bg_3d:bool = false
 
 func _ready() -> void:
-	print("Reached1")
 	SignalEventBus.emit_signal("set_mouse_mode", false)
-	print("Reached2")
 	introbox_visibility(false)
 	SignalEventBus.emit_signal("set_background_dimension", menu_bg_3d)
 

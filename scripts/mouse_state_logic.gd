@@ -28,12 +28,7 @@ func set_mouse_mode(captured:bool) -> void:
 	else:
 		if mouse_data.confined == true: Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 		else: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-
-		if mouse_data.particle_trail == true:
-			print("Mouse Trail now")
-			var particle_trail:CPUParticles2D = PARTICLE_TRAIL.instantiate()
-			##TODO add particle settings here. Like particle_trail.particle_texture = mouse_data.particle_texture
-			add_child(particle_trail,false,Node.INTERNAL_MODE_FRONT)
+		if mouse_data.particle_trail == true: add_child(PARTICLE_TRAIL.instantiate())
 		else: pass
 	printerr(STATE_CHANGED,Input.get_mouse_mode(),"\n")
 
