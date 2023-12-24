@@ -78,7 +78,7 @@ script = ExtResource("1_noa72")
 
 [node name="ParticleTrail2d_TOP" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 15
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_0tymo")
 texture = ExtResource("1_y1hxd")
 lifetime = 2.0
@@ -86,7 +86,7 @@ fixed_fps = 144
 
 [node name="ParticleTrail2d_TOP_RIGHT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 15
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_ibi3o")
 texture = ExtResource("1_y1hxd")
 lifetime = 2.0
@@ -94,7 +94,7 @@ fixed_fps = 144
 
 [node name="ParticleTrail2d_RIGHT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 15
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_kaph4")
 texture = ExtResource("1_y1hxd")
 lifetime = 2.0
@@ -102,7 +102,7 @@ fixed_fps = 144
 
 [node name="ParticleTrail2d_BOTTOM_RIGHT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 15
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_bx0a4")
 texture = ExtResource("1_y1hxd")
 lifetime = 2.0
@@ -110,7 +110,7 @@ fixed_fps = 144
 
 [node name="ParticleTrail2d_BOTTOM" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 15
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_hwndl")
 texture = ExtResource("1_y1hxd")
 lifetime = 2.0
@@ -118,7 +118,7 @@ fixed_fps = 144
 
 [node name="ParticleTrail2d_BOTTOM_LEFT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 15
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_7xt1n")
 texture = ExtResource("1_y1hxd")
 lifetime = 2.0
@@ -126,7 +126,7 @@ fixed_fps = 144
 
 [node name="ParticleTrail2d_LEFT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 15
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_aakar")
 texture = ExtResource("1_y1hxd")
 lifetime = 2.0
@@ -134,7 +134,7 @@ fixed_fps = 144
 
 [node name="ParticleTrail2d_TOP_LEFT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 15
+amount = 10
 process_material = SubResource("ParticleProcessMaterial_isthw")
 texture = ExtResource("1_y1hxd")
 lifetime = 2.0

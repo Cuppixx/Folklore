@@ -12,6 +12,7 @@ signal new_game(tutorial:bool)
 #Mouse related signals.
 signal set_mouse_mode(captured:bool)
 signal confined(on:bool)
+signal mouse_trail(on:bool)
 
 #Input related signals.
 

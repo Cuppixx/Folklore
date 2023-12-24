@@ -20,6 +20,7 @@ func _ready() -> void:
 
 	SignalEventBus.set_mouse_mode.connect(set_mouse_mode)
 	SignalEventBus.confined.connect(confined)
+	SignalEventBus.mouse_trail.connect(trail)
 	SignalEventBus.reset_controls.connect(reset_controls)
 
 #MouseMode function.
@@ -28,13 +29,17 @@ func set_mouse_mode(captured:bool) -> void:
 	else:
 		if mouse_data.confined == true: Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 		else: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		if mouse_data.particle_trail == true: add_child(PARTICLE_TRAIL.instantiate())
-		else: pass
 	printerr(STATE_CHANGED,Input.get_mouse_mode(),"\n")
+	if mouse_data.particle_trail == true: add_child(PARTICLE_TRAIL.instantiate())
+	else: get_child(0).free()
 
 #region Modify savedata.
 func confined(on:bool) -> void:
 	mouse_data.confined = on
+	update_mouse_mode()
+
+func trail(on:bool) -> void:
+	mouse_data.particle_trail = on
 	update_mouse_mode()
 
 func reset_controls() -> void:

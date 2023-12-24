@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnf85sk0dv6hv"]
+[gd_scene load_steps=6 format=3 uid="uid://bnf85sk0dv6hv"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_chjsi"]
 [ext_resource type="Script" path="res://scripts/mainmenu_background.gd" id="2_l612g"]
 [ext_resource type="LabelSettings" uid="uid://clnyd06yex24t" path="res://resources/label_setting/moreHud_rowI.tres" id="3_7o5s6"]
 [ext_resource type="Script" path="res://scripts/changelog_display.gd" id="4_b6bmv"]
-[ext_resource type="Environment" uid="uid://ciiv3lhelqrs0" path="res://resources/environment/2d_background_environment.tres" id="5_d7ykb"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d8gso"]
 
@@ -339,9 +338,6 @@ text = "Back"
 
 [node name="END" type="Control" parent="OptionsBox/PanelContainer/HBoxContainer"]
 layout_mode = 2
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("5_d7ykb")
 
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="CheckButton2" to="." method="_on_check_button_2_pressed"]
