@@ -1,141 +1,280 @@
-[gd_scene load_steps=11 format=3 uid="uid://eed5takb47dd"]
+[gd_scene load_steps=20 format=3 uid="uid://eed5takb47dd"]
 
 [ext_resource type="Script" path="res://scripts/particle_trail_2d.gd" id="1_noa72"]
-[ext_resource type="Texture2D" uid="uid://dltu4f05on6l5" path="res://resources/particles/paw.png" id="1_y1hxd"]
+[ext_resource type="Texture2D" uid="uid://cww1bm4gppux" path="res://resources/artwork/paw_paperNEW.png" id="2_dwfal"]
+[ext_resource type="Texture2D" uid="uid://c6qyd6mix4enu" path="res://resources/particle_curves/alphaCurve.tres" id="2_fnpx8"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0tymo"]
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
-scale_min = 0.02
-scale_max = 0.03
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wckuj"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ibi3o"]
 particle_flag_disable_z = true
-angle_min = -45.0
-angle_max = -45.0
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
-scale_min = 0.02
-scale_max = 0.03
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m8fiv"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kaph4"]
 particle_flag_disable_z = true
-angle_min = -90.0
-angle_max = -90.0
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
-scale_min = 0.02
-scale_max = 0.03
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n508h"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bx0a4"]
 particle_flag_disable_z = true
-angle_min = -135.0
-angle_max = -135.0
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
-scale_min = 0.02
-scale_max = 0.03
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u7bjn"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hwndl"]
 particle_flag_disable_z = true
-angle_min = -180.0
-angle_max = -180.0
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
-scale_min = 0.02
-scale_max = 0.03
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_psedm"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7xt1n"]
 particle_flag_disable_z = true
-angle_min = 135.0
-angle_max = 135.0
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
-scale_min = 0.02
-scale_max = 0.03
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_74ai2"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_aakar"]
 particle_flag_disable_z = true
-angle_min = 90.0
-angle_max = 90.0
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
-scale_min = 0.02
-scale_max = 0.03
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ornwm"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_isthw"]
 particle_flag_disable_z = true
-angle_min = 45.0
-angle_max = 45.0
 direction = Vector3(0, 0, 0)
 gravity = Vector3(0, 0, 0)
-scale_min = 0.02
-scale_max = 0.03
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vfkmk"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 0, 0)
+scale_min = 0.05
+scale_max = 0.05
+alpha_curve = ExtResource("2_fnpx8")
 
 [node name="ParticleTrail2d" type="Node2D"]
 script = ExtResource("1_noa72")
 
 [node name="ParticleTrail2d_TOP" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 10
+amount = 35
+amount_ratio = 0.1
 process_material = SubResource("ParticleProcessMaterial_0tymo")
-texture = ExtResource("1_y1hxd")
+texture = ExtResource("2_dwfal")
+lifetime = 2.0
+fixed_fps = 144
+
+[node name="ParticleTrail2d_" type="GPUParticles2D" parent="."]
+position = Vector2(400, 400)
+amount = 35
+amount_ratio = 0.1
+process_material = SubResource("ParticleProcessMaterial_wckuj")
+texture = ExtResource("2_dwfal")
 lifetime = 2.0
 fixed_fps = 144
 
 [node name="ParticleTrail2d_TOP_RIGHT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 10
+amount = 35
+amount_ratio = 0.1
 process_material = SubResource("ParticleProcessMaterial_ibi3o")
-texture = ExtResource("1_y1hxd")
+texture = ExtResource("2_dwfal")
+lifetime = 2.0
+fixed_fps = 144
+
+[node name="ParticleTrail2d_2" type="GPUParticles2D" parent="."]
+position = Vector2(400, 400)
+amount = 35
+amount_ratio = 0.1
+process_material = SubResource("ParticleProcessMaterial_m8fiv")
+texture = ExtResource("2_dwfal")
 lifetime = 2.0
 fixed_fps = 144
 
 [node name="ParticleTrail2d_RIGHT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 10
+amount = 35
+amount_ratio = 0.1
 process_material = SubResource("ParticleProcessMaterial_kaph4")
-texture = ExtResource("1_y1hxd")
+texture = ExtResource("2_dwfal")
+lifetime = 2.0
+fixed_fps = 144
+
+[node name="ParticleTrail2d_3" type="GPUParticles2D" parent="."]
+position = Vector2(400, 400)
+amount = 35
+amount_ratio = 0.1
+process_material = SubResource("ParticleProcessMaterial_n508h")
+texture = ExtResource("2_dwfal")
 lifetime = 2.0
 fixed_fps = 144
 
 [node name="ParticleTrail2d_BOTTOM_RIGHT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 10
+amount = 35
+amount_ratio = 0.1
 process_material = SubResource("ParticleProcessMaterial_bx0a4")
-texture = ExtResource("1_y1hxd")
+texture = ExtResource("2_dwfal")
+lifetime = 2.0
+fixed_fps = 144
+
+[node name="ParticleTrail2d_4" type="GPUParticles2D" parent="."]
+position = Vector2(400, 400)
+amount = 35
+amount_ratio = 0.1
+process_material = SubResource("ParticleProcessMaterial_u7bjn")
+texture = ExtResource("2_dwfal")
 lifetime = 2.0
 fixed_fps = 144
 
 [node name="ParticleTrail2d_BOTTOM" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 10
+amount = 35
+amount_ratio = 0.1
 process_material = SubResource("ParticleProcessMaterial_hwndl")
-texture = ExtResource("1_y1hxd")
+texture = ExtResource("2_dwfal")
+lifetime = 2.0
+fixed_fps = 144
+
+[node name="ParticleTrail2d_5" type="GPUParticles2D" parent="."]
+position = Vector2(400, 400)
+amount = 35
+amount_ratio = 0.1
+process_material = SubResource("ParticleProcessMaterial_psedm")
+texture = ExtResource("2_dwfal")
 lifetime = 2.0
 fixed_fps = 144
 
 [node name="ParticleTrail2d_BOTTOM_LEFT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 10
+amount = 35
+amount_ratio = 0.1
 process_material = SubResource("ParticleProcessMaterial_7xt1n")
-texture = ExtResource("1_y1hxd")
+texture = ExtResource("2_dwfal")
+lifetime = 2.0
+fixed_fps = 144
+
+[node name="ParticleTrail2d_6" type="GPUParticles2D" parent="."]
+position = Vector2(400, 400)
+amount = 35
+amount_ratio = 0.1
+process_material = SubResource("ParticleProcessMaterial_74ai2")
+texture = ExtResource("2_dwfal")
 lifetime = 2.0
 fixed_fps = 144
 
 [node name="ParticleTrail2d_LEFT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 10
+amount = 35
+amount_ratio = 0.1
 process_material = SubResource("ParticleProcessMaterial_aakar")
-texture = ExtResource("1_y1hxd")
+texture = ExtResource("2_dwfal")
+lifetime = 2.0
+fixed_fps = 144
+
+[node name="ParticleTrail2d_7" type="GPUParticles2D" parent="."]
+position = Vector2(400, 400)
+amount = 35
+amount_ratio = 0.1
+process_material = SubResource("ParticleProcessMaterial_ornwm")
+texture = ExtResource("2_dwfal")
 lifetime = 2.0
 fixed_fps = 144
 
 [node name="ParticleTrail2d_TOP_LEFT" type="GPUParticles2D" parent="."]
 position = Vector2(400, 400)
-amount = 10
+amount = 35
+amount_ratio = 0.1
 process_material = SubResource("ParticleProcessMaterial_isthw")
-texture = ExtResource("1_y1hxd")
+texture = ExtResource("2_dwfal")
+lifetime = 2.0
+fixed_fps = 144
+
+[node name="ParticleTrail2d_8" type="GPUParticles2D" parent="."]
+position = Vector2(400, 400)
+amount = 35
+amount_ratio = 0.1
+process_material = SubResource("ParticleProcessMaterial_vfkmk")
+texture = ExtResource("2_dwfal")
 lifetime = 2.0
 fixed_fps = 144

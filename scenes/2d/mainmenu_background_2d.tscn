@@ -1,14 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://dapftonlikoj5"]
+[gd_scene load_steps=16 format=3 uid="uid://dapftonlikoj5"]
 
-[ext_resource type="Texture2D" uid="uid://bnxh23efqxp31" path="res://resources/artwork/1334498.png" id="1_0csps"]
 [ext_resource type="Script" path="res://scripts/mainmenu_background_2d.gd" id="1_oiqm2"]
+[ext_resource type="Texture2D" uid="uid://cq17qsahbuc8h" path="res://resources/artwork/Folklore 2023-12-25-03-00.png" id="2_fmunn"]
 [ext_resource type="Texture2D" uid="uid://dwlpmm4liw57k" path="res://resources/particles/trace_01.png" id="2_fqpw1"]
 [ext_resource type="Texture2D" uid="uid://8iruh5uysxbb" path="res://resources/particles/spark_05.png" id="3_j1ld5"]
+[ext_resource type="Texture2D" uid="uid://cww1bm4gppux" path="res://resources/artwork/paw_paperNEW.png" id="3_xmxuq"]
 [ext_resource type="Texture2D" uid="uid://cj8d1ao4chluv" path="res://resources/particles/spark_06.png" id="4_e5c2l"]
 [ext_resource type="Texture2D" uid="uid://d2jwssa1sy62h" path="res://resources/particles/spark_02.png" id="4_sbfkh"]
 [ext_resource type="Texture2D" uid="uid://cufd4lc5ss1sb" path="res://resources/particles/smoke_07.png" id="6_u42v0"]
 [ext_resource type="Texture2D" uid="uid://m03ysiegt5ve" path="res://resources/particles/spark_04.png" id="8_5sld8"]
 [ext_resource type="Texture2D" uid="uid://beymyj6bx4hm8" path="res://resources/particles/smoke_08.png" id="9_s4vmp"]
+[ext_resource type="Environment" uid="uid://ciiv3lhelqrs0" path="res://resources/environment/2d_background_environment.tres" id="11_p13lx"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lcpxc"]
 particle_flag_disable_z = true
@@ -80,8 +82,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("1_0csps")
+texture = ExtResource("2_fmunn")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Image2" type="TextureRect" parent="BackgroundCanvas"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_xmxuq")
+expand_mode = 1
+stretch_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="BackgroundCanvas"]
@@ -186,6 +200,9 @@ autostart = true
 [node name="TimerLightningTwo" type="Timer" parent="TimerContainer"]
 wait_time = 0.5
 autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("11_p13lx")
 
 [connection signal="timeout" from="TimerContainer/TimerLightningOne" to="." method="_on_timer_lightning_main_timeout"]
 [connection signal="timeout" from="TimerContainer/TimerLightningTwo" to="." method="_on_timer_lightning_secd_timeout"]

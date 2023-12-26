@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://6yotox4p1bnd"]
+
+[ext_resource type="Texture2D" uid="uid://cww1bm4gppux" path="res://resources/artwork/paw_paperNEW.png" id="1_p7cic"]
+[ext_resource type="Shader" uid="uid://dlet5yqwhq1lk" path="res://resources/shader/paw_trail_shader.tres" id="1_tqsvf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bx1e7"]
+shader = ExtResource("1_tqsvf")
+shader_parameter/NormalMapDepth = 1.0
+
+[sub_resource type="GDScript" id="GDScript_1oyom"]
+script/source = "extends Sprite2D
+
+func _ready() -> void:
+	var timer:Timer = Timer.new()
+	add_child(timer, false, INTERNAL_MODE_DISABLED)
+	timer.timeout.connect(_free_self)
+	timer.one_shot = true
+	timer.start(1.25)
+
+func _free_self() -> void: queue_free()
+"
+
+[node name="Node2D" type="Sprite2D"]
+clip_children = 2
+light_mask = 31
+visibility_layer = 31
+texture_filter = 5
+texture_repeat = 1
+material = SubResource("ShaderMaterial_bx1e7")
+scale = Vector2(0.023, 0.023)
+texture = ExtResource("1_p7cic")
+region_enabled = true
+region_rect = Rect2(450, 20, 1500, 1500)
+region_filter_clip_enabled = true
+script = SubResource("GDScript_1oyom")

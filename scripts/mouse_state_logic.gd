@@ -6,7 +6,9 @@ extends Node #TODO See if the savehandling outside the savesytem can be improved
 const STATE_CHANGED:String = "\n--> Mouse state changed: "
 const FILE_NAME:String = "MouseData"
 const PATH_NAME:String = "projectSettings/"
-const PARTICLE_TRAIL:Resource = preload("res://scenes/2d/particle_trail_2d.tscn")
+const PARTICLE_TRAIL:Resource = preload("res://scenes/2d/particle_points_2d.tscn")
+#const PARTICLE_TRAIL:Resource = preload("res://scenes/2d/particle_line_2d.tscn")
+#const PARTICLE_TRAIL:Resource = preload("res://scenes/2d/particle_trail_2d.tscn")
 #endregion
 #region Vars list.
 var mouse_data:MouseData

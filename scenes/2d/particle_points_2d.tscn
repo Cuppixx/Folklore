@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://x88m7p1kerjp"]
+
+[ext_resource type="Script" path="res://scripts/particle_points_2d.gd" id="1_kwtl1"]
+
+[node name="ParticleTrail2d" type="Node2D"]
+script = ExtResource("1_kwtl1")
