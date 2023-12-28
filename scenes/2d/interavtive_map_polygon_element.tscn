@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2un2w0450htk"]
+
+[ext_resource type="Script" path="res://scripts/interactive_map2d_polygon.gd" id="1_mdte7"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D"]
+position = Vector2(500, 500)
+script = ExtResource("1_mdte7")

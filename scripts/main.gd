@@ -55,7 +55,10 @@ func _ready() -> void:
 #region Notification handling.
 func _notification(what:int) -> void:
 	match what:
-		NOTIFICATION_WM_CLOSE_REQUEST: printerr(ERR01); get_tree().quit(0)
+		NOTIFICATION_WM_CLOSE_REQUEST:
+			printerr(ERR01)
+			queue_free()
+			get_tree().quit(0)
 		NOTIFICATION_CRASH: push_error(ERR02)
 		NOTIFICATION_CHILD_ORDER_CHANGED: print_tree_pretty()
 		NOTIFICATION_PREDELETE: pass

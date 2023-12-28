@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dapftonlikoj5"]
+[gd_scene load_steps=19 format=3 uid="uid://dapftonlikoj5"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu_background_2d.gd" id="1_oiqm2"]
 [ext_resource type="Texture2D" uid="uid://cq17qsahbuc8h" path="res://resources/artwork/Folklore 2023-12-25-03-00.png" id="2_fmunn"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://m03ysiegt5ve" path="res://resources/particles/spark_04.png" id="8_5sld8"]
 [ext_resource type="Texture2D" uid="uid://beymyj6bx4hm8" path="res://resources/particles/smoke_08.png" id="9_s4vmp"]
 [ext_resource type="Environment" uid="uid://ciiv3lhelqrs0" path="res://resources/environment/2d_background_environment.tres" id="11_p13lx"]
+[ext_resource type="Script" path="res://scripts/interactive_map2d.gd" id="13_o31mp"]
+[ext_resource type="PackedScene" uid="uid://b2un2w0450htk" path="res://scenes/2d/interavtive_map_polygon_element.tscn" id="13_obtu4"]
+[ext_resource type="PackedScene" uid="uid://bw7wpxl0kehtu" path="res://scenes/2d/dragable_figure.tscn" id="14_o06jp"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lcpxc"]
 particle_flag_disable_z = true
@@ -76,6 +79,9 @@ script = ExtResource("1_oiqm2")
 layer = -1
 
 [node name="Image" type="TextureRect" parent="BackgroundCanvas"]
+clip_children = 2
+texture_filter = 5
+texture_repeat = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -86,7 +92,11 @@ texture = ExtResource("2_fmunn")
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Image2" type="TextureRect" parent="BackgroundCanvas"]
+[node name="Image" type="TextureRect" parent="BackgroundCanvas/Image"]
+self_modulate = Color(1, 1, 1, 0.843137)
+texture_filter = 5
+texture_repeat = 1
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -102,8 +112,13 @@ metadata/_edit_use_anchors_ = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -37.0
+offset_right = -18.0
+offset_bottom = -37.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="LightningMain" type="GPUParticles2D" parent="BackgroundCanvas/CenterContainer"]
 position = Vector2(1280, 720)
@@ -136,6 +151,7 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 40.0
 grow_horizontal = 2
+mouse_filter = 2
 
 [node name="Rain" type="GPUParticles2D" parent="BackgroundCanvas/ControlTop"]
 position = Vector2(45, -40)
@@ -201,8 +217,35 @@ autostart = true
 wait_time = 0.5
 autostart = true
 
+[node name="InteractiveMap2d" type="Node2D" parent="."]
+script = ExtResource("13_o31mp")
+
+[node name="Area2D" type="Area2D" parent="InteractiveMap2d"]
+
+[node name="CollisionPolygon2D" parent="InteractiveMap2d/Area2D" instance=ExtResource("13_obtu4")]
+polygon = PackedVector2Array(-83, -72, -137, -15, -143, 78, -85, 92, -9, 176, -4, 235, -45, 343, -124, 400, -67, 459, 37, 415, 116, 306, 301, 239, 378, 294, 471, 278, 497, 165, 488, 39, 606, -13, 630, -76, 412, -62, 356, 48, 281, 45, 231, -30)
+shape_count = 8
+display_text = "The Dominion of the Prince of Autumn"
+
+[node name="CollisionPolygon2D2" parent="InteractiveMap2d/Area2D" instance=ExtResource("13_obtu4")]
+position = Vector2(807, 750)
+polygon = PackedVector2Array(-8, -3, -182, 59, -257, 165, -373, 215, -369, 293, -257, 304, -153, 239, -55.1317, 253.612, -10, 436, 43, 441, 130, 278, 165, 229, 220, 273, 296, 232, 364, 259, 369, 191, 434, 251, 471, 147, 325, 119, 291, 61, 171, 33, 67, 50)
+shape_count = 6
+display_text = "The Free Cities of the Summerlands"
+
+[node name="CollisionPolygon2D3" parent="InteractiveMap2d/Area2D" instance=ExtResource("13_obtu4")]
+position = Vector2(1536, 652)
+polygon = PackedVector2Array(61, -85, -64, 20, -162, 34, -203, 77, -221, 154, -184, 130, -43, 286, 102, 292, 151, 354, 189, 347, 201, 252, 155, 238, 143, 151, 89, 21, 108, -38)
+shape_count = 4
+display_text = "The Old Kingdom of Summer. Fallen into disgrace."
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("11_p13lx")
 
+[node name="DragableFigure" parent="." instance=ExtResource("14_o06jp")]
+
 [connection signal="timeout" from="TimerContainer/TimerLightningOne" to="." method="_on_timer_lightning_main_timeout"]
 [connection signal="timeout" from="TimerContainer/TimerLightningTwo" to="." method="_on_timer_lightning_secd_timeout"]
+[connection signal="mouse_entered" from="InteractiveMap2d/Area2D" to="InteractiveMap2d" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="InteractiveMap2d/Area2D" to="InteractiveMap2d" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_shape_entered" from="InteractiveMap2d/Area2D" to="InteractiveMap2d" method="_on_area_2d_mouse_shape_entered"]

@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://bw7wpxl0kehtu"]
+
+[ext_resource type="Script" path="res://scripts/dragable_rigidbody2d.gd" id="1_vmpnq"]
+[ext_resource type="Texture2D" uid="uid://c8jwiv5n45bm" path="res://resources/artwork/pixelChar_Oak.png" id="2_g4b0h"]
+[ext_resource type="Texture2D" uid="uid://ce4awwthbys75" path="res://resources/artwork/pixelChar_LadyJasmine.png" id="3_qpsnq"]
+[ext_resource type="Texture2D" uid="uid://jhu8g7arahs4" path="res://resources/artwork/pixelChar_SirGilflie.png" id="4_htf1y"]
+[ext_resource type="Texture2D" uid="uid://cvi2eoji3beys" path="res://resources/artwork/pixelChar_Ren.png" id="5_ckh0j"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vq6kv"]
+bounce = 0.51
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8t87a"]
+radius = 70.0
+
+[sub_resource type="GDScript" id="GDScript_1w2m2"]
+script/source = "extends StaticBody2D
+
+@onready var collision:CollisionShape2D = $CollisionShape2D
+
+func _ready() -> void:
+	var screen_limit:Vector2 = get_window().size
+	global_position = Vector2(screen_limit.x/2, screen_limit.y)
+	collision.shape.size.x = screen_limit.x
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jktlp"]
+size = Vector2(2560, 1)
+
+[node name="DragableFigure" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_vq6kv")
+script = ExtResource("1_vmpnq")
+impulse_force = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_g4b0h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_8t87a")
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_vq6kv")
+script = ExtResource("1_vmpnq")
+starting_position = Vector2i(750, 500)
+impulse_force = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("3_qpsnq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource("CircleShape2D_8t87a")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_vq6kv")
+script = ExtResource("1_vmpnq")
+starting_position = Vector2i(1000, 500)
+impulse_force = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("4_htf1y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+shape = SubResource("CircleShape2D_8t87a")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_vq6kv")
+script = ExtResource("1_vmpnq")
+starting_position = Vector2i(1250, 500)
+impulse_force = 400.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D4"]
+texture_filter = 1
+texture_repeat = 1
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("5_ckh0j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+shape = SubResource("CircleShape2D_8t87a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = SubResource("GDScript_1w2m2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_jktlp")
+
+[connection signal="input_event" from="RigidBody2D" to="RigidBody2D" method="_on_input_event"]
+[connection signal="input_event" from="RigidBody2D2" to="RigidBody2D2" method="_on_input_event"]
+[connection signal="input_event" from="RigidBody2D3" to="RigidBody2D3" method="_on_input_event"]
+[connection signal="input_event" from="RigidBody2D4" to="RigidBody2D4" method="_on_input_event"]

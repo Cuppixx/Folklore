@@ -1,0 +1,36 @@
+MAINMEU 2d
+-- Add an interactive(dragable) item (mini-me 2d figure, or other 2d item)
+-- add different weather scenarios.
+	1. Storm (dark clouds, rain, lightning)
+	2. Rain (dark clouds, rain)
+	3. Cloudy (grey-ish clouds)
+	3. Clear (white clouds, 2d godrays)
+	4. Snow (white-ish clouds, snowflakes)
+	5. Snowstorm (greyish clouds, heavy snow flakes, frozen vignette)
+-- Make the 2d background map interactive
+	-- Lore panel that displays lore to the current area
+	-- When mouse enter and player left clicks the panel appears and a voice reads the text
+	-- !!!Set ui elements to ignore mouse input
+-- Add little effects / easter-eggs when clicking in a specific spot on screen
+
+MAINMENU 2d -- Minor Stuff and Polish
+-- Make Slim Menu slider a normal button
+-- Set button theme or make buttons text only
+
+
+ACHIEVMENTS
+-- Certain Achievments unlock new stuff:
+	--Unlock More minimes on the mainmenu
+	--Unlock Different Soundtracks in mainmenu
+
+VOICE REGOGNITION AND TEXT TO SPEECH
+-- Audiostreamplayer --> new mic profile --> gets mic input
+
+
+!!!LOOK AT TRELLOFOR MORE STUFF
+GAMEPLAY:
+	-- 	Allows the player to switch with one of the companions (either animal or humanoid)
+		The player can control the companion, using basic actions like attack (no complex stuff like talk with people)
+		While the player is controlling the companion the player avatar gets controlled by an AI
+
+	--	???

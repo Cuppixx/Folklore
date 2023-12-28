@@ -32,7 +32,9 @@ func set_mouse_mode(captured:bool) -> void:
 		if mouse_data.confined == true: Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 		else: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	printerr(STATE_CHANGED,Input.get_mouse_mode(),"\n")
-	if mouse_data.particle_trail == true: add_child(PARTICLE_TRAIL.instantiate())
+	if mouse_data.particle_trail == true:
+		if get_child_count() == 0:
+			add_child(PARTICLE_TRAIL.instantiate())
 	else: get_child(0).free()
 
 #region Modify savedata.

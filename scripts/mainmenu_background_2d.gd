@@ -1,5 +1,7 @@
 extends Node2D
 
+#get_child(index).process_material.set("angle_min", angle-angle_reach/2) #<-- used to acess the gpu settings
+
 #Node references. #Timer.
 @onready var timer_main:Timer = $TimerContainer/TimerLightningOne
 @onready var timer_secd:Timer = $TimerContainer/TimerLightningTwo

@@ -95,16 +95,6 @@ func _on_switch_menu_pressed() -> void:
 			menu_box.set_anchors_preset(Control.PRESET_CENTER)
 			menu_box.set_position(Vector2(get_viewport().size.x/2 - menu_box.size.x/2 ,get_viewport().size.y/2 - menu_box.size.y/2),false)
 
-
-
-
-
-
-
-
-
-
-
 func _on_check_button_toggled(button_pressed: bool) -> void:
 	match button_pressed:
 		true: SignalEventBus.emit_signal("confined", true)

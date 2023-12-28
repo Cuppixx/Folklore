@@ -8,6 +8,8 @@ signal clear_main
 signal set_mainmenu(enabled:bool)
 signal set_background_dimension(three_dimensional:bool)
 signal new_game(tutorial:bool)
+signal is_in_polygon_area(is_in_polygon_area:bool)
+signal in_polygon_area(polygon_index:int, display_text:String)
 
 #Mouse related signals.
 signal set_mouse_mode(captured:bool)

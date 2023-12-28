@@ -1,1 +1,16 @@
+General:
 --Filepath difference Windows / Linux / MacOS
+
+List of steps:
+	-- Finish MainMenu 2d
+	-- Finish MainMenu 3d
+	-- Finish all menus that can be reached from the MainMenu
+	-- Implement global EnvironmentManager (replaces EnvironmentManager3d and 2d)
+	-- Implement Input Manager for the Menus (!seperate from the player input manager during gameplay)
+	-- Start adding settings to the option menus
+	-- Implement Audio Manager (global Audio like Music / Weather / Button Sounds / Menu Sounds / etc)
+		--> Different from local Audio Sources
+	-- Add Achievement System (Achievement Tab in Menu)
+	-- Revamp the terrain system
+	-- Work on Sky Shader
+	-- Implement Dynamic Weather System

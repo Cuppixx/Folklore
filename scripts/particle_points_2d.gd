@@ -6,28 +6,28 @@ var last_mouse_position:Vector2 = Vector2.ZERO
 var mouse_speed:float = 1.0
 var rounding_factor:float = 100.0
 @export var position_offset:Vector2i = Vector2i(35,35)
-var timer:Timer
+@export var sprite_distance:float = 80
+@export var max_sprites:float = 70
+var can_add_sprite:bool = true
 
-func _ready() -> void:
-	position_offset = -abs(position_offset)
+func _ready() -> void: position_offset = -abs(position_offset)
 
-	timer = Timer.new()
-	timer.wait_time = 0.1
-	add_child(timer)
-	timer.timeout.connect(custom_process)
-	timer.start()
+func _process(_delta:float) -> void:
+	if get_child_count(false) > max_sprites:
+		var diff_count = get_child_count(false) - max_sprites
+		if diff_count >= 0:
+			for i in diff_count:
+				get_child(0,false).queue_free()
 
-func custom_process() -> void:
 	var current_mouse_position:Vector2 = get_global_mouse_position()
 	var diff = current_mouse_position - last_mouse_position
 
 	var mouse_movement_distance:Vector2 = round(diff)
 	mouse_speed = clamp(abs((mouse_movement_distance).length()),0,1000)
 
-	print("Mouse Speed: ",mouse_speed)
+	#print("Mouse Speed: ",mouse_speed)
 	mouse_speed = map_value(mouse_speed, 0, 1000, 0.8, 32)
-	print("Mouse Speed after map: ",mouse_speed)
-	#timer.wait_time = 0.8 / mouse_speed
+	#print("Mouse Speed after map: ",mouse_speed)
 
 	var mouse_movement_direction:Vector2 = round((diff).normalized()*rounding_factor)/rounding_factor
 	mouse_movement_direction = custom_round_vec2(mouse_movement_direction)
@@ -49,18 +49,24 @@ func custom_process() -> void:
 			add_sprite(-90, -1, 0)
 		Vector2(-1, -1):
 			add_sprite(-45, -1, -1)
-
 		Vector2(0,0): pass # <--- Standing still
 		_: pass
 		#endregion
+
 	last_mouse_position = current_mouse_position
 
 func add_sprite(angle:float, sign1:float, sign2:float) -> void:
-	var paw:Sprite2D = sprite_paw.instantiate()
-	paw.global_position.x = get_global_mouse_position().x+sign1*position_offset.x
-	paw.global_position.y = get_global_mouse_position().y+sign2*position_offset.y
-	paw.global_rotation_degrees = angle
-	add_child(paw,false,Node.INTERNAL_MODE_DISABLED)
+	var current_position:Vector2 = Vector2(get_global_mouse_position().x+sign1*position_offset.x, get_global_mouse_position().y+sign2*position_offset.y)
+
+	can_add_sprite = true
+	for sprite in get_children(false):
+		if (sprite.global_position.distance_to(current_position)) < sprite_distance: can_add_sprite = false
+
+	if can_add_sprite == true:
+		var paw:Sprite2D = sprite_paw.instantiate()
+		paw.global_position = current_position
+		paw.global_rotation_degrees = angle
+		add_child(paw,false,Node.INTERNAL_MODE_DISABLED)
 
 func custom_round_vec2(direction:Vector2) -> Vector2:
 	if direction == Vector2.ZERO: return Vector2.ZERO

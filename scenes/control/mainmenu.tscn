@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnf85sk0dv6hv"]
+[gd_scene load_steps=8 format=3 uid="uid://bnf85sk0dv6hv"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_chjsi"]
 [ext_resource type="Script" path="res://scripts/mainmenu_background.gd" id="2_l612g"]
 [ext_resource type="LabelSettings" uid="uid://clnyd06yex24t" path="res://resources/label_setting/moreHud_rowI.tres" id="3_7o5s6"]
+[ext_resource type="Theme" uid="uid://yk7mvxoieilf" path="res://resources/label_setting/mainmenu_buttons.tres" id="3_argdk"]
 [ext_resource type="Script" path="res://scripts/changelog_display.gd" id="4_b6bmv"]
+[ext_resource type="PackedScene" uid="uid://db5retmaf1kil" path="res://scenes/control/interactive_map_2d_interface.tscn" id="6_10e5i"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d8gso"]
 
@@ -14,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_chjsi")
 
 [node name="Background" type="Node" parent="."]
@@ -23,6 +26,7 @@ script = ExtResource("2_l612g")
 layout_mode = 0
 offset_right = 130.0
 offset_bottom = 31.0
+mouse_filter = 1
 text = "toggle test"
 
 [node name="CheckButton2" type="Button" parent="."]
@@ -30,6 +34,7 @@ layout_mode = 0
 offset_top = 30.925
 offset_right = 130.0
 offset_bottom = 61.925
+mouse_filter = 1
 text = "toggle test"
 
 [node name="MenuBox" type="MarginContainer" parent="."]
@@ -63,46 +68,63 @@ expand_mode = 1
 [node name="New" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("3_argdk")
 text = "New"
 
 [node name="HSeparator" type="HSeparator" parent="MenuBox/MenuBox"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_constants/separation = 8
 
 [node name="Continue" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("3_argdk")
 text = "Continue"
 
 [node name="Load" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("3_argdk")
 text = "Load"
 
 [node name="Options" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("3_argdk")
 text = "Options"
 
 [node name="Credits" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("3_argdk")
 text = "Credits"
 
 [node name="Socials" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("3_argdk")
 text = "Socials
 "
 
 [node name="SwitchMenu" type="CheckButton" parent="MenuBox/MenuBox"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("3_argdk")
 text = "Slim Menu"
 
 [node name="Quit" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("3_argdk")
 text = "Quit"
 
 [node name="MenuMusicSettingsBox" type="MarginContainer" parent="."]
@@ -120,15 +142,19 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuMusicSettingsBox"]
 layout_mode = 2
-theme_override_constants/separation = -3
+theme_override_constants/separation = 4
 
 [node name="ToggleMusic" type="CheckButton" parent="MenuMusicSettingsBox/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
+theme = ExtResource("3_argdk")
 text = "Toggle Sound"
 
 [node name="MusicVolume" type="SpinBox" parent="MenuMusicSettingsBox/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("3_argdk")
 step = 10.0
 alignment = 1
 suffix = "dB"
@@ -171,16 +197,19 @@ theme_override_constants/separation = 50
 [node name="Yes" type="Button" parent="IntroBox/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
 text = "Yes"
 
 [node name="No" type="Button" parent="IntroBox/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
 text = "No"
 
 [node name="Back" type="Button" parent="IntroBox/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 focus_mode = 0
+mouse_filter = 1
 text = "Back"
 
 [node name="FeedbackLinkBox" type="MarginContainer" parent="."]
@@ -202,9 +231,11 @@ theme_override_constants/margin_bottom = 10
 
 [node name="PanelContainer" type="PanelContainer" parent="FeedbackLinkBox"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="LinkButton" type="LinkButton" parent="FeedbackLinkBox/PanelContainer"]
 layout_mode = 2
+mouse_filter = 1
 theme_override_colors/font_color = Color(0, 0, 0.933333, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_hover_color = Color(0.172549, 0.403922, 1, 1)
@@ -228,6 +259,7 @@ script = ExtResource("4_b6bmv")
 
 [node name="PanelContainer" type="PanelContainer" parent="ChangelogBox"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ChangelogBox"]
 layout_mode = 2
@@ -235,6 +267,7 @@ theme_override_constants/separation = 14
 
 [node name="VersionLabel" type="Label" parent="ChangelogBox/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 text = "Folklore -- Preview 0.0.1"
 label_settings = ExtResource("3_7o5s6")
 vertical_alignment = 1
@@ -263,6 +296,7 @@ horizontal_alignment = 2
 custom_minimum_size = Vector2(300, 0)
 layout_direction = 2
 layout_mode = 2
+mouse_filter = 1
 text = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:Daaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
 fit_content = true
 scroll_active = false
@@ -282,6 +316,7 @@ horizontal_alignment = 2
 custom_minimum_size = Vector2(300, 0)
 layout_direction = 2
 layout_mode = 2
+mouse_filter = 1
 text = "ttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
 :D
 "
@@ -291,6 +326,7 @@ threaded = true
 text_direction = 1
 
 [node name="OptionsBox" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -301,6 +337,7 @@ grow_vertical = 0
 
 [node name="PanelContainer" type="PanelContainer" parent="OptionsBox"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="OptionsBox/PanelContainer"]
 layout_mode = 2
@@ -310,34 +347,44 @@ theme_override_constants/separation = 445
 
 [node name="START" type="Control" parent="OptionsBox/PanelContainer/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="Video" type="Button" parent="OptionsBox/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "Video"
 
 [node name="Audio" type="Button" parent="OptionsBox/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "Audio"
 
 [node name="Controls" type="Button" parent="OptionsBox/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "Controls"
 
 [node name="GameSettings" type="Button" parent="OptionsBox/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "GameSettings"
 
 [node name="Back" type="Button" parent="OptionsBox/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 text = "Back"
 
 [node name="END" type="Control" parent="OptionsBox/PanelContainer/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 1
+
+[node name="InteractiveMap2d" parent="." instance=ExtResource("6_10e5i")]
+layout_mode = 1
 
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="pressed" from="CheckButton2" to="." method="_on_check_button_2_pressed"]
