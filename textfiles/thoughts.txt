@@ -17,6 +17,7 @@ MAINMENU 2d -- Minor Stuff and Polish
 -- Make Slim Menu slider a normal button
 -- Set button theme or make buttons text only
 
+LOADING SCREEN and CUSTOM CUTSCENE PLAYER(different from 3d cutscene that, eg. Intro Cutscene or Similar Cinematic Stuff)
 
 ACHIEVMENTS
 -- Certain Achievments unlock new stuff:
@@ -33,4 +34,5 @@ GAMEPLAY:
 		The player can control the companion, using basic actions like attack (no complex stuff like talk with people)
 		While the player is controlling the companion the player avatar gets controlled by an AI
 
-	--	???
+	--	Make a camera system where multiple cams exist at once and a standalone script allwos to lerp between
+		the cas by using a lerping_cam and the twenn function

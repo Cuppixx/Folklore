@@ -4,7 +4,7 @@ extends Control
 var connection_rid
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#visible = false
+	visible = false
 	SignalEventBus.in_polygon_area.connect(_in_polygon_area)
 	SignalEventBus.is_in_polygon_area.connect(_is_in_polygon_area)
 
