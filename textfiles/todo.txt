@@ -1,5 +1,7 @@
 General:
 --Filepath difference Windows / Linux / MacOS
+-- Better performance in mainmenu
+-- Fix overlay of map in the middle of the overlay (wrong points set)
 
 List of steps:
 	-- Finish MainMenu 2d

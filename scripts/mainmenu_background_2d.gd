@@ -43,7 +43,7 @@ func _ready() -> void:
 
 	var random_int_clouds:int
 	random_int_clouds = randi_range(0, 5)
-	random_int_clouds = 2
+	random_int_clouds = 3
 
 	match random_int_clouds:
 		0:

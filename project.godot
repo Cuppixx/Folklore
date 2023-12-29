@@ -37,8 +37,8 @@ settings/profiler/max_functions=15384
 
 window/size/viewport_width=2560
 window/size/viewport_height=1440
-window/size/mode=3
-window/size/initial_position_type=3
+window/size/mode=4
+window/stretch/mode="viewport"
 
 [dotnet]
 

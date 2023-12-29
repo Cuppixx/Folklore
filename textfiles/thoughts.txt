@@ -27,7 +27,6 @@ ACHIEVMENTS
 VOICE REGOGNITION AND TEXT TO SPEECH
 -- Audiostreamplayer --> new mic profile --> gets mic input
 
-
 !!!LOOK AT TRELLOFOR MORE STUFF
 GAMEPLAY:
 	-- 	Allows the player to switch with one of the companions (either animal or humanoid)
