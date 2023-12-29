@@ -10,6 +10,7 @@ signal set_background_dimension(three_dimensional:bool)
 signal new_game(tutorial:bool)
 signal is_in_polygon_area(is_in_polygon_area:bool)
 signal in_polygon_area(polygon_index:int, display_text:String)
+signal in_polygon_area_get_index(polygon_index:int)
 
 #Mouse related signals.
 signal set_mouse_mode(captured:bool)
