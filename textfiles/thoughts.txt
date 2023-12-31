@@ -35,3 +35,6 @@ GAMEPLAY:
 
 	--	Make a camera system where multiple cams exist at once and a standalone script allwos to lerp between
 		the cas by using a lerping_cam and the twenn function
+
+	-- 	add an npc called gronola. Gronola is a half sheep half human and wears a brown coat with pink / purple highlights (eg flowers or stuff)
+		The npc is a murderer that kidnaps little children of the streets. (Horror mini quest)

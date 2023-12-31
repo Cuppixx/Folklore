@@ -18,7 +18,7 @@ script/source = "extends StaticBody2D
 @onready var collision:CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
-	var screen_limit:Vector2 = get_window().size
+	var screen_limit:Vector2 = get_viewport().size
 	global_position = Vector2(screen_limit.x/2, screen_limit.y)
 	collision.shape.size.x = screen_limit.x
 "

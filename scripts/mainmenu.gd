@@ -6,7 +6,7 @@ extends Control
 @onready var feedbacklink_box:MarginContainer = $FeedbackLinkBox
 @onready var changelog_box:MarginContainer = $ChangelogBox
 
-@onready var switchmenu_button:CheckButton = $MenuBox/MenuBox/SwitchMenu
+@onready var switchmenu_button:Button = $MenuBox/MenuBox/SwitchMenu
 
 #IntroBox references.
 @onready var intro_box:MarginContainer = $IntroBox
@@ -26,12 +26,14 @@ const PHASE1TEXT_NO:String = "Go Back"
 const PHASE0TEXT_BACK:String = "Back"
 
 @export var menu_bg_3d:bool = false
+var menu_layout:int = 0
 
 func _ready() -> void:
 	SignalEventBus.emit_signal("mouse_trail", true)
 	SignalEventBus.emit_signal("set_mouse_mode", false)
 	introbox_visibility(false)
 	SignalEventBus.emit_signal("set_background_dimension", menu_bg_3d)
+	_set_menu_layout()
 
 #IntroBox functions.
 func introbox_visibility(visibility:bool) -> void:
@@ -87,13 +89,18 @@ func _on_back_pressed() -> void: introbox_visibility(false); toggle_base_element
 func _on_quit_pressed() -> void: SignalEventBus.emit_signal("quit_game")
 
 func _on_switch_menu_pressed() -> void:
-	match switchmenu_button.button_pressed:
-		true:
+	_set_menu_layout()
+
+func _set_menu_layout() -> void:
+	match menu_layout:
+		0:
 			menu_box.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
 			menu_box.set_position(Vector2(get_viewport().size.x - menu_box.size.x ,get_viewport().size.y - menu_box.size.y),false)
-		false:
+			menu_layout = 1
+		1:
 			menu_box.set_anchors_preset(Control.PRESET_CENTER)
 			menu_box.set_position(Vector2(get_viewport().size.x/2 - menu_box.size.x/2 ,get_viewport().size.y/2 - menu_box.size.y/2),false)
+			menu_layout = 0
 
 func _on_check_button_toggled(button_pressed: bool) -> void:
 	match button_pressed:

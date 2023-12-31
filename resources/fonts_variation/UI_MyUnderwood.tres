@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://mt8tf8hs3r4i"]
+
+[ext_resource type="FontFile" uid="uid://c3hhj7ypb8pnc" path="res://resources/fonts_imported/UI_MyUnderwood.ttf" id="1_2g6mr"]
+
+[resource]
+base_font = ExtResource("1_2g6mr")

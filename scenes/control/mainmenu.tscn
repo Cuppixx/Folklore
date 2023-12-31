@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnf85sk0dv6hv"]
+[gd_scene load_steps=7 format=3 uid="uid://bnf85sk0dv6hv"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_chjsi"]
 [ext_resource type="Script" path="res://scripts/mainmenu_background.gd" id="2_l612g"]
@@ -6,8 +6,6 @@
 [ext_resource type="Theme" uid="uid://yk7mvxoieilf" path="res://resources/label_setting/mainmenu_buttons.tres" id="3_argdk"]
 [ext_resource type="Script" path="res://scripts/changelog_display.gd" id="4_b6bmv"]
 [ext_resource type="PackedScene" uid="uid://db5retmaf1kil" path="res://scenes/control/interactive_map_2d_interface.tscn" id="6_10e5i"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d8gso"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -23,6 +21,7 @@ script = ExtResource("1_chjsi")
 script = ExtResource("2_l612g")
 
 [node name="CheckButton" type="CheckButton" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 130.0
 offset_bottom = 31.0
@@ -30,6 +29,7 @@ mouse_filter = 1
 text = "toggle test"
 
 [node name="CheckButton2" type="Button" parent="."]
+visible = false
 layout_mode = 0
 offset_top = 30.925
 offset_right = 130.0
@@ -46,8 +46,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -94.0
 offset_top = -172.0
-offset_right = 94.0
-offset_bottom = 172.0
+offset_right = 71.0
+offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 15
@@ -55,15 +55,14 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
+[node name="ColorRect" type="ColorRect" parent="MenuBox"]
+visible = false
+layout_mode = 2
+color = Color(0.305882, 0.305882, 0.305882, 0.788235)
+
 [node name="MenuBox" type="VBoxContainer" parent="MenuBox"]
 layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="Logo" type="TextureRect" parent="MenuBox/MenuBox"]
-custom_minimum_size = Vector2(158, 40)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_d8gso")
-expand_mode = 1
+theme_override_constants/separation = 7
 
 [node name="New" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
@@ -71,8 +70,10 @@ focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("3_argdk")
 text = "New"
+alignment = 2
 
 [node name="HSeparator" type="HSeparator" parent="MenuBox/MenuBox"]
+self_modulate = Color(0.333333, 0, 0.466667, 1)
 layout_mode = 2
 mouse_filter = 1
 theme_override_constants/separation = 8
@@ -83,6 +84,7 @@ focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("3_argdk")
 text = "Continue"
+alignment = 2
 
 [node name="Load" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
@@ -90,6 +92,7 @@ focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("3_argdk")
 text = "Load"
+alignment = 2
 
 [node name="Options" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
@@ -97,6 +100,7 @@ focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("3_argdk")
 text = "Options"
+alignment = 2
 
 [node name="Credits" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
@@ -104,8 +108,10 @@ focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("3_argdk")
 text = "Credits"
+alignment = 2
 
 [node name="Socials" type="Button" parent="MenuBox/MenuBox"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 1
@@ -113,12 +119,14 @@ theme = ExtResource("3_argdk")
 text = "Socials
 "
 
-[node name="SwitchMenu" type="CheckButton" parent="MenuBox/MenuBox"]
+[node name="SwitchMenu" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
 focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("3_argdk")
-text = "Slim Menu"
+toggle_mode = true
+text = "Switch Menu"
+alignment = 2
 
 [node name="Quit" type="Button" parent="MenuBox/MenuBox"]
 layout_mode = 2
@@ -126,6 +134,7 @@ focus_mode = 0
 mouse_filter = 1
 theme = ExtResource("3_argdk")
 text = "Quit"
+alignment = 2
 
 [node name="MenuMusicSettingsBox" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -213,6 +222,7 @@ mouse_filter = 1
 text = "Back"
 
 [node name="FeedbackLinkBox" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

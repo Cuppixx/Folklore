@@ -2,6 +2,7 @@ General:
 --Filepath difference Windows / Linux / MacOS
 -- Better performance in mainmenu
 -- Fix overlay of map in the middle of the overlay (wrong points set)
+-- Custom resolution with window and viewport size (what is the difference between the two)
 
 List of steps:
 	-- Finish MainMenu 2d

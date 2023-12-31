@@ -4,7 +4,7 @@
 
 [resource]
 shader = ExtResource("1_6j5b2")
-shader_parameter/color = Color(0.333333, 0.117647, 0.172549, 0.313726)
+shader_parameter/color = Color(0.137255, 0.0313726, 0.0509804, 0.392157)
 shader_parameter/uv_addition = 0.0
 shader_parameter/smoothness = 1.0
 shader_parameter/steps = 0.1
