@@ -1,5 +1,6 @@
 General:
---Filepath difference Windows / Linux / MacOS
+-- Get more insight into save data and different save methods
+-- Filepath difference Windows / Linux / MacOS
 -- Better performance in mainmenu
 -- Fix overlay of map in the middle of the overlay (wrong points set)
 -- Custom resolution with window and viewport size (what is the difference between the two)

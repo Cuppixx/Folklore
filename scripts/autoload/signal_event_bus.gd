@@ -5,9 +5,9 @@ signal quit_game
 signal clear_main
 
 #MainMenu related signals.
-signal set_mainmenu(enabled:bool)
-signal set_background_dimension(three_dimensional:bool)
+signal enable_mainmenu(enable:bool)
 signal new_game(tutorial:bool)
+
 signal is_in_polygon_area(is_in_polygon_area:bool)
 signal in_polygon_area(polygon_index:int, display_text:String)
 signal in_polygon_area_get_index(polygon_index:int)

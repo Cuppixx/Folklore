@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://4vee3tlr165s"]
-
-[ext_resource type="Script" path="res://scripts/particle_line_2d.gd" id="1_vr1cm"]
-
-[node name="ParticleTrail2d" type="Line2D"]
-script = ExtResource("1_vr1cm")
-MAX_LENGTH = 30
