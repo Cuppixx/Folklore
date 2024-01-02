@@ -10,6 +10,7 @@ const ERR01:String = "\n--> Received a close request\n"
 const ERR02:String = "\n--> Received a crash notification\n"
 const ERR03:String = "No handling defined for the received notification: "
 const ERR04:String = "\n--> Received a destructor notification. Destroying instance of \"Main\"\n"
+const ERR05:String = "\n--> All nodes have been successfully removed from the tree! Quitting now!\n"
 #endregion
 #region Define internal modes.
 const INTERNAL_B:Node.InternalMode = Node.INTERNAL_MODE_BACK
@@ -57,19 +58,28 @@ func _ready() -> void:
 #region Notification handling.
 func _notification(what:int) -> void:
 	match what:
+		#NOTIFICATION_PREDELETE is triggered just before a node is removed from memory
+		#using queue_free() or free(), allowing for custom cleanup operations.
+			#NOTIFICATION_PREDELETE also triggers when a parent node is freed in Godot's node lifecycle.
+			#It ensures cleanup operations before the node's removal during depth-first traversal.
 		NOTIFICATION_PREDELETE:
 			printerr(ERR04)
-			SignalEventBus.new_game.disconnect(_new_game)
-			SignalEventBus.clear_main.disconnect(_clear_main)
+			#region Disconnect functions to signals from the SignalEventBus.
 			SignalEventBus.quit_game.disconnect(_quit_game)
+			SignalEventBus.clear_main.disconnect(_clear_main)
+			SignalEventBus.new_game.disconnect(_new_game)
+			#endregion
 
 		NOTIFICATION_WM_CLOSE_REQUEST:
 			printerr(ERR01)
-			_safe_quit(false)
+			queue_free()
 
 		NOTIFICATION_CRASH:
+			#printerr(ERR02)
 			push_error(ERR02)
-			#TODO: Implement a fallback system to signal high-value nodes for saving settings, such as player stats, quest progression, etc.
+			#TODO: Implement a fallback system to signal high-value nodes for saving settings,
+			#such as player stats, quest progression, etc.
+			#MAKE SURE ... NOTIFICATION_CRASH actually works before implementation.
 			get_tree().quit(1)
 
 		NOTIFICATION_CHILD_ORDER_CHANGED: print_tree_pretty()
@@ -77,33 +87,26 @@ func _notification(what:int) -> void:
 #endregion
 #region Internal functions.
 func _custom_add_child(resource:Resource,readable:bool,internal:Node.InternalMode) -> void:
-	#_custom_add_child only works when adding resources to self.
-	#If you want to add resources to other nodes from this node (within this script), please refer to the actual add_child method.
+		#The _custom_add_child() func only works when adding resources to self.
+		#If you want to add resources to other nodes from this node (within this script), please refer to the actual add_child method.
 	add_child(resource.instantiate(),readable,internal)
-
-func _safe_quit(is_safe_to_quit:bool) -> void:
-	#If it is safe to quit (is_safe_to_quit == true), free resources and exit the game.
-	#Otherwise, recursively check child nodes. If any have pending operations, delays quitting until they complete.
-	#Once all child nodes are clear, retries to quit.
-	if is_safe_to_quit == true:
-		queue_free()
-		get_tree().quit(0)
-	else:
-		if get_child_count(true) != 0: _safe_quit(false) #<-- delays quitting.
-		else: _safe_quit(true) #<-- allow safe quitting.
 #endregion
 #region Functions for connected signals.
 func _quit_game() -> void:
-	get_tree().root.propagate_notification(NOTIFICATION_PREDELETE)
 	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
 
-func _clear_main() -> void: for node in get_children(false): node.queue_free()
+func _clear_main() -> void:
+	for node in get_children(false): node.queue_free()
 
 #TODO: Relocate the "new game" logic away from the main node to the worldspace (mapmanager?).
 #Keep only the base worldspace logic (add worldspace only) in this node.
 #Currently "new game" logic is located here for easier debugging
 func _new_game(tutorial:bool) -> void:
 	_custom_add_child(WORLDSPACE3D,false,INTERNAL_D)
+func _enable_worldspace3d() -> void: pass
+func _remove_worldspace3d() -> void: pass
+
+func _on_tree_exited() -> void:
+	printerr(ERR05)
+	get_tree().quit(0)
 #endregion
-func add_worldspace3d() -> void: pass
-func remove_worldspace3d() -> void: pass
