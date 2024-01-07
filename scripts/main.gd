@@ -9,8 +9,9 @@ extends Node
 const ERR01:String = "\n--> Received a close request\n"
 const ERR02:String = "\n--> Received a crash notification\n"
 const ERR03:String = "No handling defined for the received notification: "
-const ERR04:String = "\n--> Received a destructor notification. Destroying instance of \"Main\"\n"
+const ERR04:String = "\n--> Received a destructor notification. Destroying instance of |Main|\n"
 const ERR05:String = "\n--> All nodes have been successfully removed from the tree! Quitting now!\n"
+const ERR06:String = "\n--> Root node has been successfully removed. Tree destructed!\n"
 #endregion
 #region Define internal modes.
 const INTERNAL_B:Node.InternalMode = Node.INTERNAL_MODE_BACK
@@ -22,6 +23,7 @@ const MOUSE_STATE_LOGIC:Resource = preload("res://scenes/mouse_state_logic.tscn"
 const AUDIO_MANAGER:Resource = preload("res://scenes/audio_manager.tscn")
 const INTERFACE_REGISTRY:Resource = preload("res://scenes/interface_registry.tscn")
 const LOADING_SCREEN_MANAGER:Resource = preload("res://scenes/loading_screen_manager.tscn")
+const GLOBAL_ENVIRONMENT_MANAGER:Resource = preload("res://scenes/global_environment_manager.tscn")
 #endregion
 #region Resources for non-essential nodes.
 const WORLDSPACE3D:Resource = preload("res://scenes/3d/worldspace3d.tscn")
@@ -37,6 +39,7 @@ func _ready() -> void:
 
 	_custom_add_child(MOUSE_STATE_LOGIC,false,INTERNAL_F)
 	_custom_add_child(AUDIO_MANAGER,false,INTERNAL_F)
+	_custom_add_child(GLOBAL_ENVIRONMENT_MANAGER,false,INTERNAL_F)
 	_custom_add_child(INTERFACE_REGISTRY,false,INTERNAL_B)
 	#endregion
 
@@ -44,7 +47,9 @@ func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
 	#TODO: Develop a save file mechanism to store fundamental startup settings, including resolution,
 	#video settings, game preferences, and any other settings not covered by existing nodes.
-	SignalEventBus.emit_signal("enable_mainmenu",true)
+	SignalEventBus.emit_signal("enable_ui","MainMenu")
+	#TODO: Add a setting for the player to toggle auto-continue on or off. This will skip the mainmenu call and
+	#instead add the worldspace3d with the latest save directly.
 	#endregion
 
 	#region Connect functions to signals from the SignalEventBus.
@@ -106,7 +111,9 @@ func _new_game(tutorial:bool) -> void:
 func _enable_worldspace3d() -> void: pass
 func _remove_worldspace3d() -> void: pass
 
-func _on_tree_exited() -> void:
+func _on_tree_exiting() -> void:
 	printerr(ERR05)
 	get_tree().quit(0)
+
+func _on_tree_exited() -> void: printerr(ERR06)
 #endregion

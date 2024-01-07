@@ -4,3 +4,5 @@
 
 [node name="MouseStateLogic" type="Node"]
 script = ExtResource("1_8bjsu")
+
+[node name="TrailNodeHolder" type="Node" parent="."]

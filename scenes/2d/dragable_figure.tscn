@@ -35,7 +35,7 @@ script = ExtResource("1_vmpnq")
 impulse_force = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
-texture_filter = 1
+texture_filter = 6
 texture_repeat = 1
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_g4b0h")
@@ -51,7 +51,7 @@ starting_position = Vector2i(750, 500)
 impulse_force = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D2"]
-texture_filter = 1
+texture_filter = 6
 texture_repeat = 1
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("3_qpsnq")
@@ -67,7 +67,7 @@ starting_position = Vector2i(1000, 500)
 impulse_force = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D3"]
-texture_filter = 1
+texture_filter = 6
 texture_repeat = 1
 scale = Vector2(0.475, 0.475)
 texture = ExtResource("4_htf1y")
@@ -83,7 +83,7 @@ starting_position = Vector2i(1250, 500)
 impulse_force = 400.0
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D4"]
-texture_filter = 1
+texture_filter = 6
 texture_repeat = 1
 scale = Vector2(0.475, 0.475)
 texture = ExtResource("5_ckh0j")

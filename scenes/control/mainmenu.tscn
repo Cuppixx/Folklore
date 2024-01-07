@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://db5retmaf1kil" path="res://scenes/control/interactive_map_2d_interface.tscn" id="6_10e5i"]
 
 [node name="MainMenu" type="Control"]
+texture_filter = 6
+texture_repeat = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,7 +23,6 @@ script = ExtResource("1_chjsi")
 script = ExtResource("2_l612g")
 
 [node name="CheckButton" type="CheckButton" parent="."]
-visible = false
 layout_mode = 0
 offset_right = 130.0
 offset_bottom = 31.0
@@ -29,7 +30,6 @@ mouse_filter = 1
 text = "toggle test"
 
 [node name="CheckButton2" type="Button" parent="."]
-visible = false
 layout_mode = 0
 offset_top = 30.925
 offset_right = 130.0
@@ -73,7 +73,7 @@ text = "New"
 alignment = 2
 
 [node name="HSeparator" type="HSeparator" parent="MenuBox/MenuBox"]
-self_modulate = Color(0.333333, 0, 0.466667, 1)
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 mouse_filter = 1
 theme_override_constants/separation = 8

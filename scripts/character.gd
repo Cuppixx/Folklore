@@ -39,7 +39,7 @@ var auto_walk:bool = false
 @onready var camera:Camera3D = $Neck/Camera3D
 
 func _ready() -> void:
-	SignalEventBus.emit_signal("mouse_trail", false)
+	SignalEventBus.emit_signal("allow_mouse_trail", false)
 	SignalEventBus.emit_signal("set_mouse_mode", true)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -50,7 +50,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		SignalEventBus.emit_signal("set_mainmenu", true)
+		SignalEventBus.emit_signal("enable_ui", "MainMenu")
 		SignalEventBus.emit_signal("clear_main")
 
 	if Input.is_action_just_pressed("change_fov"):

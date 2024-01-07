@@ -6,3 +6,4 @@
 script = ExtResource("1_u635j")
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

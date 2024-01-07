@@ -1,0 +1,3 @@
+func map_value(value_to_map: float, from_min: float, from_max: float, to_min: float, to_max: float) -> float:
+	var normalized_value = (value_to_map - from_min) / (from_max - from_min)
+	return lerp(to_min, to_max, normalized_value)

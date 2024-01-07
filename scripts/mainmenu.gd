@@ -28,8 +28,11 @@ const PHASE0TEXT_BACK:String = "Back"
 @export var menu_bg_3d:bool = false
 var menu_layout:int = 0
 
+#Used for texting, remove if not used
+var temp = false
+
 func _ready() -> void:
-	SignalEventBus.emit_signal("mouse_trail", true)
+	SignalEventBus.emit_signal("allow_mouse_trail", true)
 	SignalEventBus.emit_signal("set_mouse_mode", false)
 	introbox_visibility(false)
 	SignalEventBus.emit_signal("set_background_dimension", menu_bg_3d)
@@ -76,7 +79,7 @@ func _on_yes_pressed() -> void:
 		0: bool_temp = true
 		1: bool_temp = false
 	SignalEventBus.emit_signal("new_game", bool_temp)
-	SignalEventBus.emit_signal("set_mainmenu", false)
+	SignalEventBus.emit_signal("enable_ui","Hud")
 
 func _on_no_pressed() -> void:
 	match current_phase:
@@ -104,8 +107,19 @@ func _set_menu_layout() -> void:
 
 func _on_check_button_toggled(button_pressed: bool) -> void:
 	match button_pressed:
-		true: SignalEventBus.emit_signal("confined", true)
-		false: SignalEventBus.emit_signal("confined", false)
+		true:
+			print("player toggled on")
+			SignalEventBus.emit_signal("mouse_trail", true)
+		false:
+			print("player toggled off")
+			SignalEventBus.emit_signal("mouse_trail", false)
 
 func _on_check_button_2_pressed() -> void:
-	SignalEventBus.emit_signal("reset_controls")
+	if temp == true:
+		print("not allowed")
+		SignalEventBus.emit_signal("allow_mouse_trail",false)
+		temp = false
+	else:
+		print("allowed")
+		SignalEventBus.emit_signal("allow_mouse_trail",true)
+		temp = true
