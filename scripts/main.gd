@@ -87,7 +87,7 @@ func _notification(what:int) -> void:
 			#MAKE SURE ... NOTIFICATION_CRASH actually works before implementation.
 			get_tree().quit(1)
 
-		NOTIFICATION_CHILD_ORDER_CHANGED: print_tree_pretty()
+		NOTIFICATION_CHILD_ORDER_CHANGED: print_tree()
 		_: push_warning(ERR03, what)
 #endregion
 #region Internal functions.

@@ -50,8 +50,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		SignalEventBus.emit_signal("enable_ui", "MainMenu")
-		SignalEventBus.emit_signal("clear_main")
+		SignalEventBus.emit_signal("enable_ui", "PauseMenu")
+		#SignalEventBus.emit_signal("clear_main")
 
 	if Input.is_action_just_pressed("change_fov"):
 		if cam_state == false:

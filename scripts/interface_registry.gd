@@ -12,6 +12,7 @@ const INTERNAL_F:Node.InternalMode = Node.INTERNAL_MODE_FRONT
 #region Resources.
 const MAINMENU:Resource = preload("res://scenes/control/mainmenu.tscn")
 const HUD:Resource = preload("res://scenes/control/hud.tscn")
+const PAUSE_MENU:Resource = preload("res://scenes/control/pause_menu.tscn")
 #endregion
 
 #Ready function.
@@ -21,7 +22,7 @@ func _ready() -> void:
 #Notification handling.
 func _notification(what: int) -> void:
 	match what:
-		NOTIFICATION_CHILD_ORDER_CHANGED: printerr(ERR01); print_tree_pretty()
+		NOTIFICATION_CHILD_ORDER_CHANGED: printerr(ERR01); print_tree()
 		NOTIFICATION_PREDELETE:
 			SignalEventBus.enable_ui.disconnect(_match_ui_element)
 		_:pass
@@ -38,6 +39,6 @@ func _match_ui_element(element:String) -> void:
 		"Hud":
 			_enable_ui_element(true,HUD,false,INTERNAL_F)
 		"PauseMenu":
-			pass
+			_enable_ui_element(false,PAUSE_MENU,false,INTERNAL_D)
 		"OptionsMenu":
 			pass
